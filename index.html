@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Robotic Tongue UI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<h1> Robotic Tongue</h1>
+
+	<h2>Extrinsic Muscles </h2>
+<div class = "Exmuscle">
+	<h3>Genioglossus</h3>
+		<h4>Anterior</h4>
+		<div class="slidecontainer">
+		<input type="range" min="1" max="180" value="0" class="slider" id="GenioglossusASlider" onchange="servo(this.value)">
+		<p>   Value: <span id="GenioglossusASliderValue"></span></p>
+		</div>
+		
+		<h4>Middle</h4>
+		<div class="slidecontainer">
+		<input type="range" min="1" max="180" value="0" class="slider" id="GenioglossusMSlider" onchange="servo(this.value)">
+		<p>   Value: <span id="GenioglossusMSliderValue"></span></p>
+		</div>
+		<h4>Posterior</h4>
+		<div class="slidecontainer">
+		<input type="range" min="1" max="180" value="0" class="slider" id="GenioglossusPSlider" onchange="servo(this.value)">
+		<p>   Value: <span id="GenioglossusPSliderValue"></span></p>
+		</div>
+</div>
+
+<div class = "Exmuscle">
+	<h3>Hyoglossus</h3>
+	<h4>Left</h4>
+	<div class="slidecontainer">
+		<input type="range" min="1" max="100" value="0" class="slider" id="HyglossusLSlider">
+		<p>   Value: <span id="HyglossusLSliderValue"></span>&percnt;</p>
+		</div>
+	<h4>Right</h4>
+	<div class="slidecontainer">
+		<input type="range" min="1" max="100" value="0" class="slider" id="HyglossusRSlider">
+		<p>   Value: <span id="HyglossusRSliderValue"></span>&percnt;</p>
+		</div>
+</div>	
+
+<div class = "Exmuscle">
+	<h3>Styloglossus</h3>
+	<h4>Left</h4>
+	<div class="slidecontainer">
+		<input type="range" min="1" max="100" value="0" class="slider" id="StyloglossusLSlider">
+		<p>Value: <span id="StyloglossusLSliderValue"></span>&percnt;</p>
+		</div>
+	<h4>Right</h4>
+	<div class="slidecontainer">
+		<input type="range" min="1" max="100" value="0" class="slider" id="StyloglossusRSlider">
+		<p>Value: <span id="StyloglossusRSliderValue"></span>&percnt;</p>
+		</div>
+</div>
+
+<div class = "Exmuscle">
+	<h3>Palatoglossus</h3>
+	<h4>Left</h4>
+	<div class="slidecontainer">
+		<input type="range" min="1" max="100" value="0" class="slider" id="PalatoglossusLSlider">
+		<p>Value: <span id="PalatoglossusLSliderValue"></span>&percnt;</p>
+		</div>
+	<h4>Right</h4>
+	<div class="slidecontainer">
+		<input type="range" min="1" max="100" value="0" class="slider" id="PalatoglossusRSlider">
+		<p>Value: <span id="PalatoglossusRSliderValue"></span>&percnt;</p>
+		</div>
+</div>
+
+
+<h2>Intrinsic Muscles </h2>
+<div class = "Intmuscle">
+	<h3>Transversus</h3>
+	<h4>Anterior</h4>
+	<div class="slidecontainer">
+		<input type="range" min="1" max="100" value="0" class="slider" id="TransversusASlider">
+		<p>Value: <span id="TransversusASliderValue"></span>&percnt;</p>
+		</div>
+	<h4>Posterior</h4>
+	<div class="slidecontainer">
+		<input type="range" min="1" max="100" value="0" class="slider" id="TransversusPSlider">
+		<p>Value: <span id="TransversusPSliderValue"></span>&percnt;</p>
+		</div>	
+</div>
+<div class = "Intmuscle">
+	<h3>Verticalis</h3>
+	<h4>Left Anterior</h4>
+	<div class="slidecontainer">
+		<input type="range" min="1" max="100" value="0" class="slider" id="VerticalisLASlider">
+		<p>Value: <span id="VerticalisLASliderValue"></span>&percnt;</p>
+		</div>
+	<h4>Right Anterior</h4>
+	<div class="slidecontainer">
+		<input type="range" min="1" max="100" value="0" class="slider" id="VerticalisRASlider">
+		<p>Value: <span id="VerticalisRASliderValue"></span>&percnt;</p>
+		</div>
+	<h4>Left Posterior</h4>
+	<div class="slidecontainer">
+		<input type="range" min="1" max="100" value="0" class="slider" id="VerticalisLPSlider">
+		<p>Value: <span id="VerticalisLPSliderValue"></span>&percnt;</p>
+		</div>
+	<h4>Right Posterior</h4>
+	<div class="slidecontainer">
+		<input type="range" min="1" max="100" value="0" class="slider" id="VerticalisRPSlider">
+		<p>Value: <span id="VerticalisRPSliderValue"></span>&percnt;</p>
+		</div>
+</div>		
+<div class = "Intmuscle">
+	<h3>Superior Longitudinal</h3>
+	<h4>Left</h4>
+	<div class="slidecontainer">
+		<input type="range" min="1" max="100" value="0" class="slider" id="SLLSlider">
+		<p>Value: <span id="SLLSliderValue"></span>&percnt;</p>
+		</div>
+	<h4>Right</h4>
+	<div class="slidecontainer">
+		<input type="range" min="1" max="100" value="0" class="slider" id="SLRSlider">
+		<p>Value: <span id="SLRSliderValue"></span>&percnt;</p>
+		</div>
+</div>		
+<div class = "Intmuscle">
+	<h3>Inferior Longitudinal</h3>
+	<h4>Left</h4>
+	<div class="slidecontainer">
+		<input type="range" min="1" max="100" value="0" class="slider" id="ILLSlider">
+		<p>Value: <span id="ILLSliderValue"></span>&percnt;</p>
+		</div>
+	<h4>Right</h4>
+	<div class="slidecontainer">
+		<input type="range" min="1" max="100" value="0" class="slider" id="ILRSlider">
+		<p>Value: <span id="ILRSliderValue"></span>&percnt;</p>
+		</div>
+</div>
+<button>Reset</button>
+<button>Apply</button>
+    <script src="script.js"></script>
+</body>
+</html>
