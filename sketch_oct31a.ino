@@ -20,7 +20,7 @@
 Servo servo1;//servo object to control servo num 1
 //attach servo to gpio
 static const int servo1Pin = 13;
-
+//**
 
 // Replace with your network credentials
 const char* ssid = "Weefee";
@@ -132,6 +132,7 @@ void initWebSocket() {
 void setup() {
   Serial.begin(115200);
   servo1.attach(servo1Pin);//attaches servo gpio to servo object
+  //**
   
 
   initFS();
