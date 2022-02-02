@@ -16,6 +16,15 @@
   margin-right: 10%;
   padding: 5px;
 }
+.SavedConfig {
+  background-color: #A2999E;
+  color: white;
+  border: 2px solid black;
+  margin: 5px;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding: 5px;
+}
 .slidecontainer {
   width: 95%;
 }
