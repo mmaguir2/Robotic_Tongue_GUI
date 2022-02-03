@@ -7,11 +7,11 @@ To create a physical, soft bodied robot with actuators corresponding to each mus
 Model will allow students to interact with it to better understand the effects each muscle has on tongue shape/speech
 
 Senior Design Key Requirements:
-Realistic model that mimics tongue motion
-Portable (<50 lbs)
-**User-friendly software/hardware
+~Realistic model that mimics tongue motion
+~Portable (<50 lbs)
+~**User-friendly software/hardware
 Control muscle contraction percentage with user-interface**
-Educates students and researchers on functions of each tongue muscle
+~Educates students and researchers on functions of each tongue muscle
 
 
 How to use files:
