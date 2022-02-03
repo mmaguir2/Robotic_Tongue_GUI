@@ -18,13 +18,19 @@
 #include <Servo.h>
 
 Servo servo1;//servo object to control servo num 1
+Servo servo2;//servo object to control servo num 2
+Servo servo3;//servo object to control servo num 3
+Servo servo4;//servo object to control servo num 3
 //attach servo to gpio
 static const int servo1Pin = 13;
+static const int servo2Pin = 12;
+static const int servo3Pin = 14;
+static const int servo4Pin = 27;
 //**
 
 // Replace with your network credentials
-const char* ssid = "Weefee";
-const char* password = "mediumbonus189";
+const char* ssid = "iphone";
+const char* password = "Password";
 
 // Create AsyncWebServer object on port 80
 AsyncWebServer server(80);
@@ -37,6 +43,7 @@ String message = "";
 String sliderValue1 = "0";
 String sliderValue2 = "0";
 String sliderValue3 = "0";
+String sliderValue4 = "0";
 
 
 //Json Variable to Hold Slider Values
@@ -47,7 +54,7 @@ String getSliderValues(){
   sliderValues["sliderValue1"] = String(sliderValue1);
   sliderValues["sliderValue2"] = String(sliderValue2);
   sliderValues["sliderValue3"] = String(sliderValue3);
-
+  sliderValues["sliderValue4"] = String(sliderValue4);
   String jsonString = JSON.stringify(sliderValues);
   return jsonString;
 }
@@ -65,6 +72,7 @@ void initFS() {
 // Initialize WiFi
 void initWiFi() {
   WiFi.mode(WIFI_STA);
+  //WiFi.begin(ssid);
   WiFi.begin(ssid, password);
   Serial.print("Connecting to WiFi ..");
   while (WiFi.status() != WL_CONNECTED) {
@@ -101,6 +109,12 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
       Serial.print(getSliderValues());
       notifyClients(getSliderValues());
     }
+     if (message.indexOf("4s") >= 0) {
+      sliderValue4 = message.substring(2);
+      
+      Serial.print(getSliderValues());
+      notifyClients(getSliderValues());
+    }
     if (strcmp((char*)data, "getValues") == 0) {
       notifyClients(getSliderValues());
     }
@@ -132,6 +146,9 @@ void initWebSocket() {
 void setup() {
   Serial.begin(115200);
   servo1.attach(servo1Pin);//attaches servo gpio to servo object
+  servo2.attach(servo2Pin);//attaches servo gpio to servo object
+  servo3.attach(servo3Pin);//attaches servo gpio to servo object
+  servo4.attach(servo4Pin);//attaches servo gpio to servo object
   //**
   
 
@@ -154,7 +171,8 @@ void setup() {
 
 void loop() {
   servo1.write(sliderValue1.toInt());
-  //servo2.write(sliderValue2.toInt());
-  //servo3.write(sliderValue3.toInt());
+  servo2.write(sliderValue2.toInt());
+  servo3.write(sliderValue3.toInt());
+  servo4.write(sliderValue4.toInt());
   ws.cleanupClients();
 }
