@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-
+<body>
 <h1> Robotic Tongue</h1>
 
 	<h2>Extrinsic Muscles </h2>
@@ -14,18 +14,18 @@
 	<h3>Genioglossus</h3>
 		<h4>Anterior</h4>
 		<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider1">
+		<input type="range" onchange="updateSliderPWM(this)" min="1" max="180" value="0" class="slider" id="slider1">
 		<p>   Value: <span id="sliderValue1"></span></p>
 		</div>
 		
 		<h4>Middle</h4>
 		<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider2">
+		<input type="range" onchange="updateSliderPWM(this)" min="1" max="180" value="0" class="slider" id="slider2">
 		<p>   Value: <span id="sliderValue2"></span></p>
 		</div>
 		<h4>Posterior</h4>
 		<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider3">
+		<input type="range" onchange="updateSliderPWM(this)" min="1" max="180" value="0" class="slider" id="slider3">
 		<p>   Value: <span id="sliderValue3"></span></p>
 		</div>
 </div>
@@ -34,12 +34,12 @@
 	<h3>Hyoglossus</h3>
 	<h4>Left</h4>
 	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="100" value="0" class="slider" id="slider4">
+		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider4">
 		<p>   Value: <span id="sliderValue4"></span></p>
 		</div>
 	<h4>Right</h4>
 	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="100" value="0" class="slider" id="slider5">
+		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider5">
 		<p>   Value: <span id="sliderValue5"></span></p>
 		</div>
 </div>	
@@ -48,12 +48,12 @@
 	<h3>Styloglossus</h3>
 	<h4>Left</h4>
 	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="100" value="0" class="slider" id="slider6">
+		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider6">
 		<p>Value: <span id="sliderValue6"></span></p>
 		</div>
 	<h4>Right</h4>
 	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="100" value="0" class="slider" id="slider7">
+		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider7">
 		<p>Value: <span id="sliderValue7"></span></p>
 		</div>
 </div>
@@ -62,13 +62,13 @@
 	<h3>Palatoglossus</h3>
 	<h4>Left</h4>
 	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="100" value="0" class="slider" id="slider8">
-		<p>Value: <span id="sliderValue8"></span></p>
+		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider8">
+		<p>Value: <span id="sliderValue8"></span>&percnt;</p>
 		</div>
 	<h4>Right</h4>
 	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="100" value="0" class="slider" id="slider9">
-		<p>Value: <span id="sliderValue9"></span></p>
+		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider9">
+		<p>Value: <span id="sliderValue9"></span>&percnt;</p>
 		</div>
 </div>
 
@@ -78,75 +78,71 @@
 	<h3>Transversus</h3>
 	<h4>Anterior</h4>
 	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="100" value="0" class="slider" id="slider10">
-		<p>Value: <span id="sliderValue10"></span></p>
+		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider10">
+		<p>Value: <span id="sliderValue10"></span>&percnt;</p>
 		</div>
 	<h4>Posterior</h4>
 	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="100" value="0" class="slider" id="slider11">
-		<p>Value: <span id="sliderValue11"></span></p>
+		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider11">
+		<p>Value: <span id="sliderValue11"></span>&percnt;</p>
 		</div>	
 </div>
 <div class = "Intmuscle">
 	<h3>Verticalis</h3>
 	<h4>Left Anterior</h4>
 	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="100" value="0" class="slider" id="slider12">
-		<p>Value: <span id="sliderValue12"></span></p>
+		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider12">
+		<p>Value: <span id="sliderValue12"></span>&percnt;</p>
 		</div>
 	<h4>Right Anterior</h4>
 	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="100" value="0" class="slider" id="slider13">
-		<p>Value: <span id="sliderValue13"></span></p>
+		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider13">
+		<p>Value: <span id="sliderValue13"></span>&percnt;</p>
 		</div>
 	<h4>Left Posterior</h4>
 	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="100" value="0" class="slider" id="slider14">
-		<p>Value: <span id="sliderValue14"></span></p>
+		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider14">
+		<p>Value: <span id="sliderValue14"></span>&percnt;</p>
 		</div>
 	<h4>Right Posterior</h4>
 	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="100" value="0" class="slider" id="slider15">
-		<p>Value: <span id="sliderValue15"></span></p>
+		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider15">
+		<p>Value: <span id="sliderValue15"></span>&percnt;</p>
 		</div>
 </div>		
 <div class = "Intmuscle">
 	<h3>Superior Longitudinal</h3>
 	<h4>Left</h4>
 	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="100" value="0" class="slider" id="slider16">
-		<p>Value: <span id="sliderValue16"></span></p>
+		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider16">
+		<p>Value: <span id="sliderValue16"></span>&percnt;</p>
 		</div>
 	<h4>Right</h4>
 	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="100" value="0" class="slider" id="slider17">
-		<p>Value: <span id="sliderValue17"></span></p>
+		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider17">
+		<p>Value: <span id="sliderValue17"></span>&percnt;</p>
 		</div>
 </div>		
 <div class = "Intmuscle">
 	<h3>Inferior Longitudinal</h3>
 	<h4>Left</h4>
 	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="100" value="0" class="slider" id="slider18">
-		<p>Value: <span id="sliderValue18"></span></p>
+		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider18">
+		<p>Value: <span id="sliderValue18"></span>&percnt;</p>
 		</div>
 	<h4>Right</h4>
 	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="100" value="0" class="slider" id="slider19">
-		<p>Value: <span id="sliderValue19"></span></p>
+		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider19">
+		<p>Value: <span id="sliderValue19"></span>&percnt;</p>
 		</div>
 </div>
-
 <h2>Saved Movements </h2>
 <div class = "SavedConfig">
 		<h3>Here are the saved configurations</h3>
 </div>
 <button onclick = "resetButton()" >Reset</button>
-
 <button>Apply</button>
-    <script src="script.js"></script>
-</body>
-<button>Save</button>
+<button onclick="logoutButton()">Logout</button>
     <script src="script.js"></script>
 </body>
 </html>
