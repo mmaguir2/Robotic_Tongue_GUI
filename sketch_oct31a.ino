@@ -1,87 +1,62 @@
-/* 
-  Rui Santos
-  Complete project details at https://RandomNerdTutorials.com/esp32-web-server-websocket-sliders/
-  
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files.
-  
-  The above copyright notice and this permission notice shall be included in all
-  copies or substantial portions of the Software.
-*/
-
+// Import required libraries
+#include "WiFi.h"
+#include "ESPAsyncWebServer.h"
+#include "SPIFFS.h"
 #include <Arduino.h>
 #include <WiFi.h>
 #include <AsyncTCP.h>
-#include <ESPAsyncWebServer.h>
-#include "SPIFFS.h"
 #include <Arduino_JSON.h>
+#include "SPIFFS.h"
 #include <Servo.h>
 
-Servo servo1;//servo object to control servo num 1
-Servo servo2;//servo object to control servo num 2
-Servo servo3;//servo object to control servo num 3
-Servo servo4;//servo object to control servo num 3
-//attach servo to gpio
-static const int servo1Pin = 13;
-static const int servo2Pin = 12;
-static const int servo3Pin = 14;
-static const int servo4Pin = 27;
-//**
+//import graphics library
+#include <Adafruit_GFX.h>    // Core graphics library
+#include <XTronical_ST7735.h> // Hardware-specific library
+
+#include <SPI.h>
+// set up pins we are going to use to talk to the screen
+#define TFT_DC     15       // register select (stands for Data Control perhaps!)
+#define TFT_RST   4         // Display reset pin, you can also connect this to the ESP32 reset
+                            // in which case, set this #define pin to -1!
+#define TFT_CS   22       // Display enable (Chip select), if not enabled will not talk on SPI bus
+// initialise the routine to talk to this display with these pin connections (as we've missed off
+// TFT_SCLK and TFT_MOSI the routine presumes we are using hardware SPI and internally uses 13 and 11
+Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS,  TFT_DC, TFT_RST);  
+
+Servo servo1;
+Servo servo2;
+Servo servo3;
+Servo servo4;
+
+static const int LED = 27;
+static const int servo1Pin = 21;
+static const int servo2Pin = 25;
+static const int servo3Pin = 26;
+static const int servo4Pin = 33;
 
 // Replace with your network credentials
-const char* ssid = "iphone";
-const char* password = "Password";
+const char* ssid = "ncsu";//"Pack House";
+//const char* password = "thunkanddunk";
 
 // Create AsyncWebServer object on port 80
 AsyncWebServer server(80);
-// Create a WebSocket object
-
 AsyncWebSocket ws("/ws");
-//servo gpio
 
+//JSON interaction
 String message = "";
 String sliderValue1 = "0";
 String sliderValue2 = "0";
 String sliderValue3 = "0";
-String sliderValue4 = "0";
-
-
 //Json Variable to Hold Slider Values
 JSONVar sliderValues;
-
 //Get Slider Values
 String getSliderValues(){
   sliderValues["sliderValue1"] = String(sliderValue1);
   sliderValues["sliderValue2"] = String(sliderValue2);
   sliderValues["sliderValue3"] = String(sliderValue3);
-  sliderValues["sliderValue4"] = String(sliderValue4);
   String jsonString = JSON.stringify(sliderValues);
   return jsonString;
 }
-
-// Initialize SPIFFS
-void initFS() {
-  if (!SPIFFS.begin()) {
-    Serial.println("An error has occurred while mounting SPIFFS");
-  }
-  else{
-   Serial.println("SPIFFS mounted successfully");
-  }
-}
-
-// Initialize WiFi
-void initWiFi() {
-  WiFi.mode(WIFI_STA);
-  //WiFi.begin(ssid);
-  WiFi.begin(ssid, password);
-  Serial.print("Connecting to WiFi ..");
-  while (WiFi.status() != WL_CONNECTED) {
-    Serial.print('.');
-    delay(1000);
-  }
-  Serial.println(WiFi.localIP());
-}
-
 void notifyClients(String sliderValues) {
   ws.textAll(sliderValues);
 }
@@ -109,12 +84,6 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
       Serial.print(getSliderValues());
       notifyClients(getSliderValues());
     }
-     if (message.indexOf("4s") >= 0) {
-      sliderValue4 = message.substring(2);
-      
-      Serial.print(getSliderValues());
-      notifyClients(getSliderValues());
-    }
     if (strcmp((char*)data, "getValues") == 0) {
       notifyClients(getSliderValues());
     }
@@ -136,43 +105,126 @@ void onEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventType 
       break;
   }
 }
+//https passwords
+const char* http_username = "admin";
+const char* http_password = "admin";
+const char* PARAM_INPUT_1 = "state";
+const int output = 2;
 
+void initSPIFFS(){
+  if(!SPIFFS.begin(true)){
+    Serial.println("An Error has occurred while mounting SPIFFS");
+    return;
+  }
+}
+void initWiFi() {
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid);//,password);
+  Serial.print("Connecting to WiFi ..");
+  while (WiFi.status() != WL_CONNECTED) {
+    Serial.print('.');
+    delay(1000);
+  }
+  Serial.println(WiFi.localIP());
+  //display to print out the ip address
+  tft.fillScreen(ST7735_BLACK);
+  tft.print('\n');
+  tft.print(WiFi.localIP());
+  tft.print('\n');
+  tft.print("User Name: ");
+  tft.print('\n');
+  tft.print(http_username);
+  tft.print('\n');
+  tft.print("Password: ");
+  tft.print('\n');
+  tft.print(http_password);
+}
+void initWebPage(){
+  // Route for root / web page
+  server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
+    if(!request->authenticate(http_username, http_password))
+      return request->requestAuthentication();
+    request->send(SPIFFS, "/index.html", "text/html");
+    
+  });
+  // Route to load style.css file - so we can see it being pretty
+  server.on("/style.css", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send(SPIFFS, "/style.css", "text/css");
+  });
+}
+void initLogInAndOut(){
+  server.on("/logout", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send(401);
+  });    
+  server.on("/logged-out", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send(SPIFFS, "/logged-out.html", "text/html");   
+    digitalWrite(4, LOW);  //turns off display once you log out
+  });
+  // Send a GET request to <ESP_IP>/update?state=<inputMessage>
+  server.on("/update", HTTP_GET, [] (AsyncWebServerRequest *request) {
+    if(!request->authenticate(http_username, http_password))
+      return request->requestAuthentication();
+    String inputMessage;
+    String inputParam;
+    // GET input1 value on <ESP_IP>/update?state=<inputMessage>
+    if (request->hasParam(PARAM_INPUT_1)) {
+      inputMessage = request->getParam(PARAM_INPUT_1)->value();
+      inputParam = PARAM_INPUT_1;
+      digitalWrite(output, inputMessage.toInt());
+    }
+    else {
+      inputMessage = "No message sent";
+      inputParam = "none";
+    }
+    Serial.println(inputMessage);
+    request->send(200, "text/plain", "OK");
+  });
+}
+//added
 void initWebSocket() {
   ws.onEvent(onEvent);
   server.addHandler(&ws);
 }
 
+void attachServos(){
+  servo1.attach(servo1Pin);
+  servo2.attach(servo2Pin);
+  servo3.attach(servo3Pin);
+}
 
 void setup() {
+  // put your setup code here, to run once:
+  //led 
+  pinMode(LED, OUTPUT);
+  //servo code
+  attachServos();
+  // Serial port for debugging purposes
   Serial.begin(115200);
-  servo1.attach(servo1Pin);//attaches servo gpio to servo object
-  servo2.attach(servo2Pin);//attaches servo gpio to servo object
-  servo3.attach(servo3Pin);//attaches servo gpio to servo object
-  servo4.attach(servo4Pin);//attaches servo gpio to servo object
-  //**
+  tft.fillScreen(ST7735_BLACK);  //clear the screen first
+  tft.init();
   
-
-  initFS();
+  initSPIFFS(); //same as initFS in Maritza's code
   initWiFi();
-
+  
   initWebSocket();
-  
-  // Web Server Root URL
-  server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(SPIFFS, "/index.html", "text/html");
-  });
-  
-  server.serveStatic("/", SPIFFS, "/");
+  initWebPage();
+  initLogInAndOut();
 
   // Start server
+  server.serveStatic("/", SPIFFS, "/");
   server.begin();
 
+  
 }
 
 void loop() {
-  servo1.write(sliderValue1.toInt());
-  servo2.write(sliderValue2.toInt());
-  servo3.write(sliderValue3.toInt());
-  servo4.write(sliderValue4.toInt());
+  // put your main code here, to run repeatedly:
+  //servo code
+  //Serial.println(sliderValue1.toInt());
+  digitalWrite(LED, HIGH);
+  servo1.write(sliderValue1.toInt()); 
+  servo2.write(sliderValue2.toInt()); 
+  servo3.write(sliderValue3.toInt()); 
   ws.cleanupClients();
+  delay(10);
 }
