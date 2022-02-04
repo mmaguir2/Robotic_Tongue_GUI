@@ -31,15 +31,13 @@ function onClose(event) {
 }
 
 function updateSliderPWM(element) {
-	//the slider number is the last character or last two characters
-    var sliderNumber = element.id.charAt(element.id.length-1);//***change later
-	//slider value is new slider position
+    var sliderNumber = element.id.charAt(element.id.length-1);
     var sliderValue = document.getElementById(element.id).value;
-	//changes Value: to slider posiiton
     document.getElementById("sliderValue"+sliderNumber).innerHTML = sliderValue;
     console.log(sliderValue);
     websocket.send(sliderNumber+"s"+sliderValue.toString());
 }
+
 function onMessage(event) {
     console.log(event.data);
     var myObj = JSON.parse(event.data);
@@ -51,6 +49,13 @@ function onMessage(event) {
         document.getElementById("slider"+ (i+1).toString()).value = myObj[key];
     }
 }
+function logoutButton() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "/logout", true);
+  xhr.send();
+  setTimeout(function(){ window.open("/logged-out","_self"); }, 1000);
+}
+
 function resetButton(){
 	for(var i=1; i<20;i++){
 	//changes slider Value: to zero
