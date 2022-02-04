@@ -23,3 +23,4 @@ How to set up Arduino IDE to run files on esp32:
 Credits:
 -Majority of java.js file from https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/#css-f (reset button function by Maritza)
 -Majority of arduino sketch file from https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/#css-f (servo edits by Maritza)
+-Logout.html file by Nathan
