@@ -7,11 +7,11 @@ To create a physical, soft bodied robot with actuators corresponding to each mus
 Model will allow students to interact with it to better understand the effects each muscle has on tongue shape/speech
 
 Senior Design Key Requirements:
-~Realistic model that mimics tongue motion
-~Portable (<50 lbs)
-~**User-friendly software/hardware
-Control muscle contraction percentage with user-interface**
-~Educates students and researchers on functions of each tongue muscle
+~Realistic model that mimics tongue motion <br>
+~Portable (<50 lbs) <br>
+~**User-friendly software/hardware <br>
+~Control muscle contraction percentage with user-interface** <br>
+~Educates students and researchers on functions of each tongue muscle <br>
 
 
 How to use files:
@@ -21,6 +21,6 @@ How to set up Arduino IDE to run files on esp32:
 -Step 3 and 4 from this tutorial: https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/
 
 Credits:
--Majority of java.js file from https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/#css-f (reset button function by Maritza)
--Majority of arduino sketch file from https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/#css-f (servo edits by Maritza)
--Logout.html file by Nathan
+-Majority of java.js file from https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/#css-f (reset button function by Maritza) <br>
+-Majority of arduino sketch file from https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/#css-f (servo edits by Maritza) <br>
+-Logout.html file by Nathan <br>
