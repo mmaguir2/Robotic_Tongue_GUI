@@ -1,6 +1,7 @@
 # Robotic_Tongue_GUI
 User Interface Subsystem from Robotic Tongue Senior Design Project <br>
-Maritza Aguirre
+Maritza Aguirre <br>
+Nathan Chen <br>
  
 Senior Design Project Goal:   <br>
 To create a physical, soft bodied robot with actuators corresponding to each muscle.
