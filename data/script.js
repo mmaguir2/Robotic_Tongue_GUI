@@ -57,11 +57,55 @@ function logoutButton() {
 }
 
 function resetButton(){
-	for(var i=1; i<20;i++){
+	for(var i=1; i<10;i++){
 	//changes slider Value: to zero
 	document.getElementById("sliderValue"+i.toString()).innerHTML = "0";
 	//changes slider to postion zero
 	document.getElementById("slider"+i.toString()).value = "0";
 	updateSliderPWM(document.getElementById("slider"+i.toString()));
 	}	
+}
+
+function bOne(){
+	var i = 1;
+	//changes slider Value: to zero
+	document.getElementById("sliderValue"+i.toString()).innerHTML = "5";
+	//changes slider to postion zero
+	document.getElementById("slider"+i.toString()).value = "5";
+	i = 2;
+	document.getElementById("sliderValue"+i.toString()).innerHTML = "10";
+	//changes slider to postion zero
+	document.getElementById("slider"+i.toString()).value = "10";
+	i = 3;
+	document.getElementById("sliderValue"+i.toString()).innerHTML = "15";
+	//changes slider to postion zero
+	document.getElementById("slider"+i.toString()).value = "15";
+	i = 4;
+	document.getElementById("sliderValue"+i.toString()).innerHTML = "20";
+	//changes slider to postion zero
+	document.getElementById("slider"+i.toString()).value = "20";
+	i = 5;
+	document.getElementById("sliderValue"+i.toString()).innerHTML = "25";
+	//changes slider to postion zero
+	document.getElementById("slider"+i.toString()).value = "25";
+	i = 6;
+	document.getElementById("sliderValue"+i.toString()).innerHTML = "30";
+	//changes slider to postion zero
+	document.getElementById("slider"+i.toString()).value = "30";
+	i = 7;
+	document.getElementById("sliderValue"+i.toString()).innerHTML = "35";
+	//changes slider to postion zero
+	document.getElementById("slider"+i.toString()).value = "35";
+	i = 8;
+	document.getElementById("sliderValue"+i.toString()).innerHTML = "40";
+	//changes slider to postion zero
+	document.getElementById("slider"+i.toString()).value = "40";
+	i = 9;
+	document.getElementById("sliderValue"+i.toString()).innerHTML = "45";
+	//changes slider to postion zero
+	document.getElementById("slider"+i.toString()).value = "45";
+	
+	for(var i=1; i<10;i++){
+	updateSliderPWM(document.getElementById("slider"+i.toString()));
+	}
 }
