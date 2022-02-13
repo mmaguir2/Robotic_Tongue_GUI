@@ -1,148 +1,111 @@
-<!DOCTYPE html>
-<html>
-<body style = "background-color:#EEF0F2;">
-<head>
-    <title>Robotic Tongue UI</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-<h1> Robotic Tongue</h1>
+// Complete project details: https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/
 
-	<h2>Extrinsic Muscles </h2>
-<div class = "Exmuscle">
-	<h3>Genioglossus</h3>
-		<h4>Anterior</h4>
-		<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="1" max="180" value="0" class="slider" id="slider1">
-		<p>   Value: <span id="sliderValue1"></span></p>
-		</div>
-		
-		<h4>Middle</h4>
-		<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="1" max="180" value="0" class="slider" id="slider2">
-		<p>   Value: <span id="sliderValue2"></span></p>
-		</div>
-		<h4>Posterior</h4>
-		<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="1" max="180" value="0" class="slider" id="slider3">
-		<p>   Value: <span id="sliderValue3"></span></p>
-		</div>
-</div>
+var gateway = `ws://${window.location.hostname}/ws`;
+var websocket;
+window.addEventListener('load', onload);
 
-<div class = "Exmuscle">
-	<h3>Hyoglossus</h3>
-	<h4>Left</h4>
-	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider4">
-		<p>   Value: <span id="sliderValue4"></span></p>
-		</div>
-	<h4>Right</h4>
-	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider5">
-		<p>   Value: <span id="sliderValue5"></span></p>
-		</div>
-</div>	
+function onload(event) {
+    initWebSocket();
+}
 
-<div class = "Exmuscle">
-	<h3>Styloglossus</h3>
-	<h4>Left</h4>
-	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider6">
-		<p>Value: <span id="sliderValue6"></span></p>
-		</div>
-	<h4>Right</h4>
-	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider7">
-		<p>Value: <span id="sliderValue7"></span></p>
-		</div>
-</div>
+function getValues(){
+    websocket.send("getValues");
+}
 
-<div class = "Exmuscle">
-	<h3>Palatoglossus</h3>
-	<h4>Left</h4>
-	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider8">
-		<p>Value: <span id="sliderValue8"></span>&percnt;</p>
-		</div>
-	<h4>Right</h4>
-	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider9">
-		<p>Value: <span id="sliderValue9"></span>&percnt;</p>
-		</div>
-</div>
+function initWebSocket() {
+    console.log('Trying to open a WebSocket connection…');
+    websocket = new WebSocket(gateway);
+    websocket.onopen = onOpen;
+    websocket.onclose = onClose;
+    websocket.onmessage = onMessage;
+}
 
+function onOpen(event) {
+    console.log('Connection opened');
+    getValues();
+}
 
-<h2>Intrinsic Muscles </h2>
-<div class = "Intmuscle">
-	<h3>Transversus</h3>
-	<h4>Anterior</h4>
-	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider10">
-		<p>Value: <span id="sliderValue10"></span>&percnt;</p>
-		</div>
-	<h4>Posterior</h4>
-	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider11">
-		<p>Value: <span id="sliderValue11"></span>&percnt;</p>
-		</div>	
-</div>
-<div class = "Intmuscle">
-	<h3>Verticalis</h3>
-	<h4>Left Anterior</h4>
-	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider12">
-		<p>Value: <span id="sliderValue12"></span>&percnt;</p>
-		</div>
-	<h4>Right Anterior</h4>
-	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider13">
-		<p>Value: <span id="sliderValue13"></span>&percnt;</p>
-		</div>
-	<h4>Left Posterior</h4>
-	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider14">
-		<p>Value: <span id="sliderValue14"></span>&percnt;</p>
-		</div>
-	<h4>Right Posterior</h4>
-	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider15">
-		<p>Value: <span id="sliderValue15"></span>&percnt;</p>
-		</div>
-</div>		
-<div class = "Intmuscle">
-	<h3>Superior Longitudinal</h3>
-	<h4>Left</h4>
-	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider16">
-		<p>Value: <span id="sliderValue16"></span>&percnt;</p>
-		</div>
-	<h4>Right</h4>
-	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider17">
-		<p>Value: <span id="sliderValue17"></span>&percnt;</p>
-		</div>
-</div>		
-<div class = "Intmuscle">
-	<h3>Inferior Longitudinal</h3>
-	<h4>Left</h4>
-	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider18">
-		<p>Value: <span id="sliderValue18"></span>&percnt;</p>
-		</div>
-	<h4>Right</h4>
-	<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="1" max="100" value="0" class="slider" id="slider19">
-		<p>Value: <span id="sliderValue19"></span>&percnt;</p>
-		</div>
-</div>
-<h2>Saved Movements </h2>
-<div class = "SavedConfig">
-		<h3>Here are the saved configurations</h3>
-</div>
-<button onclick = "resetButton()" >Reset</button>
-<button>Apply</button>
-<button onclick="logoutButton()">Logout</button>
-    <script src="script.js"></script>
-</body>
-</html>
+function onClose(event) {
+    console.log('Connection closed');
+    setTimeout(initWebSocket, 2000);
+}
+
+function updateSliderPWM(element) {
+    var sliderNumber = element.id.charAt(element.id.length-1);
+    var sliderValue = document.getElementById(element.id).value;
+    document.getElementById("sliderValue"+sliderNumber).innerHTML = sliderValue;
+    console.log(sliderValue);
+    websocket.send(sliderNumber+"s"+sliderValue.toString());
+}
+
+function onMessage(event) {
+    console.log(event.data);
+    var myObj = JSON.parse(event.data);
+    var keys = Object.keys(myObj);
+
+    for (var i = 0; i < keys.length; i++){
+        var key = keys[i];
+        document.getElementById(key).innerHTML = myObj[key];
+        document.getElementById("slider"+ (i+1).toString()).value = myObj[key];
+    }
+}
+function logoutButton() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "/logout", true);
+  xhr.send();
+  setTimeout(function(){ window.open("/logged-out","_self"); }, 1000);
+}
+
+function resetButton(){
+	for(var i=1; i<10;i++){
+	//changes slider Value: to zero
+	document.getElementById("sliderValue"+i.toString()).innerHTML = "0";
+	//changes slider to postion zero
+	document.getElementById("slider"+i.toString()).value = "0";
+	updateSliderPWM(document.getElementById("slider"+i.toString()));
+	}	
+}
+
+function bOne(){
+	var i = 1;
+	//changes slider Value: to zero
+	document.getElementById("sliderValue"+i.toString()).innerHTML = "5";
+	//changes slider to postion zero
+	document.getElementById("slider"+i.toString()).value = "5";
+	i = 2;
+	document.getElementById("sliderValue"+i.toString()).innerHTML = "10";
+	//changes slider to postion zero
+	document.getElementById("slider"+i.toString()).value = "10";
+	i = 3;
+	document.getElementById("sliderValue"+i.toString()).innerHTML = "15";
+	//changes slider to postion zero
+	document.getElementById("slider"+i.toString()).value = "15";
+	i = 4;
+	document.getElementById("sliderValue"+i.toString()).innerHTML = "20";
+	//changes slider to postion zero
+	document.getElementById("slider"+i.toString()).value = "20";
+	i = 5;
+	document.getElementById("sliderValue"+i.toString()).innerHTML = "25";
+	//changes slider to postion zero
+	document.getElementById("slider"+i.toString()).value = "25";
+	i = 6;
+	document.getElementById("sliderValue"+i.toString()).innerHTML = "30";
+	//changes slider to postion zero
+	document.getElementById("slider"+i.toString()).value = "30";
+	i = 7;
+	document.getElementById("sliderValue"+i.toString()).innerHTML = "35";
+	//changes slider to postion zero
+	document.getElementById("slider"+i.toString()).value = "35";
+	i = 8;
+	document.getElementById("sliderValue"+i.toString()).innerHTML = "40";
+	//changes slider to postion zero
+	document.getElementById("slider"+i.toString()).value = "40";
+	i = 9;
+	document.getElementById("sliderValue"+i.toString()).innerHTML = "45";
+	//changes slider to postion zero
+	document.getElementById("slider"+i.toString()).value = "45";
+	
+	for(var i=1; i<10;i++){
+	updateSliderPWM(document.getElementById("slider"+i.toString()));
+	}
+}
