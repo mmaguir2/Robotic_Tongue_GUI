@@ -138,6 +138,9 @@ void initWiFi() {
   tft.print("Password: ");
   tft.print('\n');
   tft.print(http_password);
+  //added code for MAC address
+  tft.print('\n');
+  tft.print("AC:67:B2:3C:D5:B8");
 }
 void initWebPage(){
   // Route for root / web page
