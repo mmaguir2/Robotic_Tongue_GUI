@@ -44,16 +44,16 @@ AsyncWebSocket ws("/ws");
 
 //JSON interaction
 String message = "";
-String sliderValue1 = "0";
-String sliderValue2 = "0";
-String sliderValue3 = "0";
+String sliderValue10 = "0";
+String sliderValue11 = "0";
+String sliderValue12 = "0";
 //Json Variable to Hold Slider Values
 JSONVar sliderValues;
 //Get Slider Values
 String getSliderValues(){
-  sliderValues["sliderValue1"] = String(sliderValue1);
-  sliderValues["sliderValue2"] = String(sliderValue2);
-  sliderValues["sliderValue3"] = String(sliderValue3);
+  sliderValues["sliderValue10"] = String(sliderValue10);
+  sliderValues["sliderValue11"] = String(sliderValue11);
+  sliderValues["sliderValue12"] = String(sliderValue12);
   String jsonString = JSON.stringify(sliderValues);
   return jsonString;
 }
@@ -66,20 +66,20 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
   if (info->final && info->index == 0 && info->len == len && info->opcode == WS_TEXT) {
     data[len] = 0;
     message = (char*)data;
-    if (message.indexOf("1s") >= 0) {
-      sliderValue1 = message.substring(2);
+    if (message.indexOf("10s") >= 0) {
+      sliderValue10 = message.substring(2);
       
       Serial.print(getSliderValues());
       notifyClients(getSliderValues());
     }
-    if (message.indexOf("2s") >= 0) {
-      sliderValue2 = message.substring(2);
+    if (message.indexOf("11s") >= 0) {
+      sliderValue11 = message.substring(2);
       
       Serial.print(getSliderValues());
       notifyClients(getSliderValues());
     }    
-    if (message.indexOf("3s") >= 0) {
-      sliderValue3 = message.substring(2);
+    if (message.indexOf("12s") >= 0) {
+      sliderValue12 = message.substring(2);
       
       Serial.print(getSliderValues());
       notifyClients(getSliderValues());
@@ -139,6 +139,8 @@ void initWiFi() {
   tft.print('\n');
   tft.print(http_password);
   //added code for MAC address
+  tft.print('\n');
+  tft.print("Mac Address: ");
   tft.print('\n');
   tft.print("AC:67:B2:3C:D5:B8");
 }
@@ -223,11 +225,13 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   //servo code
-  //Serial.println(sliderValue1.toInt());
+  //Serial.println(sliderValue10.substring(1).toInt()); //- printing all zeros
+  //Serial.println(sliderValue11.substring(1).toInt());
+  //Serial.println(sliderValue12.substring(1).toInt());
   digitalWrite(LED, HIGH);
-  servo1.write(sliderValue1.toInt()); 
-  servo2.write(sliderValue2.toInt()); 
-  servo3.write(sliderValue3.toInt()); 
+  servo1.write(sliderValue10.substring(1).toInt()); 
+  servo2.write(sliderValue11.substring(1).toInt()); 
+  servo3.write(sliderValue12.substring(1).toInt()); 
   ws.cleanupClients();
   delay(10);
 }
