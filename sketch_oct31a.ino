@@ -28,10 +28,10 @@ Servo servo2;
 Servo servo3;
 Servo servo4;
 
-static const int LED = 27;
-static const int servo1Pin = 21;
-static const int servo2Pin = 25;
-static const int servo3Pin = 26;
+static const int LED = 33;
+static const int servo1Pin = 27;
+static const int servo2Pin = 12;
+static const int servo3Pin = 14;
 static const int servo4Pin = 33;
 
 // Replace with your network credentials
