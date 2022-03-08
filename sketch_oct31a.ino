@@ -23,16 +23,26 @@
 // TFT_SCLK and TFT_MOSI the routine presumes we are using hardware SPI and internally uses 13 and 11
 Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS,  TFT_DC, TFT_RST);  
 
+//wifi reconnect variables
+unsigned long previousMillis = 0;
+unsigned long interval = 30000;
+
 Servo servo1;
 Servo servo2;
 Servo servo3;
 Servo servo4;
+Servo servo5;
+Servo servo6;
+Servo servo7;
 
 static const int LED = 33;
-static const int servo1Pin = 27;
-static const int servo2Pin = 12;
-static const int servo3Pin = 14;
-static const int servo4Pin = 33;
+static const int servo1Pin = 21;
+static const int servo2Pin = 13;
+static const int servo3Pin = 27;
+static const int servo4Pin = 3;
+static const int servo5Pin = 19;
+//static const int servo6Pin = 15;
+//static const int servo7Pin = 17;
 
 // Replace with your network credentials
 const char* ssid = "ncsu";//"Pack House";
@@ -47,6 +57,11 @@ String message = "";
 String sliderValue10 = "0";
 String sliderValue11 = "0";
 String sliderValue12 = "0";
+String sliderValue13 = "0";
+String sliderValue14 = "0";
+//String sliderValue15 = "0";
+//String sliderValue16 = "0";
+
 //Json Variable to Hold Slider Values
 JSONVar sliderValues;
 //Get Slider Values
@@ -54,6 +69,11 @@ String getSliderValues(){
   sliderValues["sliderValue10"] = String(sliderValue10);
   sliderValues["sliderValue11"] = String(sliderValue11);
   sliderValues["sliderValue12"] = String(sliderValue12);
+  sliderValues["sliderValue13"] = String(sliderValue13);
+  sliderValues["sliderValue14"] = String(sliderValue14);
+  //sliderValues["sliderValue15"] = String(sliderValue15);
+  //sliderValues["sliderValue16"] = String(sliderValue16);
+  
   String jsonString = JSON.stringify(sliderValues);
   return jsonString;
 }
@@ -80,6 +100,18 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
     }    
     if (message.indexOf("12s") >= 0) {
       sliderValue12 = message.substring(2);
+      
+      Serial.print(getSliderValues());
+      notifyClients(getSliderValues());
+    }
+    if (message.indexOf("13s") >= 0) {
+      sliderValue13 = message.substring(2);
+      
+      Serial.print(getSliderValues());
+      notifyClients(getSliderValues());
+    }
+    if (message.indexOf("14s") >= 0) {
+      sliderValue14 = message.substring(2);
       
       Serial.print(getSliderValues());
       notifyClients(getSliderValues());
@@ -121,13 +153,13 @@ void initWiFi() {
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid);//,password);
   Serial.print("Connecting to WiFi ..");
+  tft.fillScreen(ST7735_BLACK);
   while (WiFi.status() != WL_CONNECTED) {
     Serial.print('.');
     delay(1000);
   }
   Serial.println(WiFi.localIP());
-  //display to print out the ip address
-  tft.fillScreen(ST7735_BLACK);
+  
   tft.print('\n');
   tft.print(WiFi.localIP());
   tft.print('\n');
@@ -195,6 +227,8 @@ void attachServos(){
   servo1.attach(servo1Pin);
   servo2.attach(servo2Pin);
   servo3.attach(servo3Pin);
+  servo4.attach(servo4Pin);
+  servo5.attach(servo5Pin);
 }
 
 void setup() {
@@ -225,13 +259,39 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   //servo code
-  //Serial.println(sliderValue10.substring(1).toInt()); //- printing all zeros
-  //Serial.println(sliderValue11.substring(1).toInt());
+  /*Serial.println(sliderValue10.substring(1)); //- prints out 78
+  Serial.println(sliderValue10);              //prints out s78
+  Serial.println('\n');
+  Serial.println(sliderValue11.substring(1)); //prints out 55
+  Serial.println(sliderValue11);              //prints out s55
+  Serial.println('\n');*/
   //Serial.println(sliderValue12.substring(1).toInt());
-  digitalWrite(LED, HIGH);
+  //led right here idk why but need to move it somewhere else
+  digitalWrite(LED, HIGH); 
   servo1.write(sliderValue10.substring(1).toInt()); 
   servo2.write(sliderValue11.substring(1).toInt()); 
   servo3.write(sliderValue12.substring(1).toInt()); 
+  servo4.write(sliderValue13.substring(1).toInt()); 
+  servo5.write(sliderValue14.substring(1).toInt()); 
+
+  //display
+  //display to print out the ip address
+  //tft.fillScreen(ST7735_BLACK);
+    
+    
   ws.cleanupClients();
+
+
+  //reconnecting to wifi
+  unsigned long currentMillis = millis();
+  // if WiFi is down, try reconnecting
+  if ((WiFi.status() != WL_CONNECTED) && (currentMillis - previousMillis >=interval)) {
+    Serial.print(millis());
+    Serial.println("Reconnecting to WiFi...");
+    WiFi.disconnect();
+    WiFi.reconnect();
+    previousMillis = currentMillis;
+  }
+  
   delay(10);
 }
