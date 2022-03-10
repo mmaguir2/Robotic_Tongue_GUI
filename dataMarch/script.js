@@ -72,25 +72,15 @@ function resetButton(){
 
 function bOne(){
 	//changes slider Value: to 5
-	document.getElementById("sliderValue10").innerHTML = "5";
+	document.getElementById("sliderValue19").innerHTML = "180";
 	//changes slider to postion 5
-	document.getElementById("slider10").value = "5";
+	document.getElementById("slider19").value = "180";
 	
-	document.getElementById("sliderValue11").innerHTML = "10";
-	document.getElementById("slider11").value = "10";
+	document.getElementById("sliderValue20").innerHTML = "180";
+	document.getElementById("slider20").value = "180";
 	
-	document.getElementById("sliderValue12").innerHTML = "15";
-	document.getElementById("slider12").value = "15";
-
-	document.getElementById("sliderValue13").innerHTML = "20";
-	document.getElementById("slider13").value = "20";
-
-	document.getElementById("sliderValue14").innerHTML = "25";
-	document.getElementById("slider14").value = "25";
-	//only update servos of slider values that dont move two at a time
-	for(var i=10; i<15;i++){
-	updateSliderPWM(document.getElementById("slider"+i.toString()));
-	}
+	updateSliderPWM(document.getElementById("slider19"));
+	updateSliderPWM(document.getElementById("slider20"));
 }
 //One slider moving two values---------------------------------------------------------------------------------------------------
 function genioAP(element) {
