@@ -305,7 +305,7 @@ void attachServos(){
 void setup() {
   // put your setup code here, to run once:
   //led 
-  pinMode(LED, OUTPUT);
+  //pinMode(LED, OUTPUT);
   //servo code
   attachServos();
   // Serial port for debugging purposes
@@ -351,7 +351,7 @@ void loop() {
   Serial.println('\n');*/
   //Serial.println(sliderValue12.substring(1).toInt());
   //led right here idk why but need to move it somewhere else
-  digitalWrite(LED, HIGH); 
+  //digitalWrite(LED, HIGH); 
   if(sliderValue10.substring(1).toInt() != previousValue10){
     delay(DELAYTIME);
     previousValue10 = sliderValue10.substring(1).toInt(); 
