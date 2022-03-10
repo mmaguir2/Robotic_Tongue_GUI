@@ -65,7 +65,7 @@ function resetButton(){
 	//changes slider to postion zero
 	document.getElementById("slider"+i.toString()).value = "0";
 	}	
-	for(var i=10; i<23;i++){
+	for(var i=10; i<22;i++){
 	updateSliderPWM(document.getElementById("slider"+i.toString()));
 	}
 }
@@ -93,18 +93,33 @@ function bOne(){
 	}
 }
 //One slider moving two values---------------------------------------------------------------------------------------------------
+function genioAP(element) {
+    var sliderNumber = element.id.charAt(element.id.length-2)+element.id.charAt(element.id.length-1);
+    var sliderValue = document.getElementById(element.id).value;
+	//change slider Value: 
+    document.getElementById("sliderValue"+sliderNumber).innerHTML = sliderValue;
+	//change left and right slider Value:
+	document.getElementById("sliderValue10").innerHTML = sliderValue;
+	document.getElementById("sliderValue11").innerHTML = sliderValue;
+	//move  left and right slider position
+	document.getElementById("slider10").value = sliderValue;
+	document.getElementById("slider11").value = sliderValue;
+    for(var i = 10; i<12; i++){
+		updateSliderPWM(document.getElementById("slider"+i.toString()));
+	}
+}
 function hyoglossusLR(element) {
     var sliderNumber = element.id.charAt(element.id.length-2)+element.id.charAt(element.id.length-1);
     var sliderValue = document.getElementById(element.id).value;
 	//change slider Value: 
     document.getElementById("sliderValue"+sliderNumber).innerHTML = sliderValue;
 	//change left and right slider Value:
+	document.getElementById("sliderValue12").innerHTML = sliderValue;
 	document.getElementById("sliderValue13").innerHTML = sliderValue;
-	document.getElementById("sliderValue14").innerHTML = sliderValue;
 	//move  left and right slider position
+	document.getElementById("slider12").value = sliderValue;
 	document.getElementById("slider13").value = sliderValue;
-	document.getElementById("slider14").value = sliderValue;
-    for(var i = 13; i<15; i++){
+    for(var i = 12; i<14; i++){
 		updateSliderPWM(document.getElementById("slider"+i.toString()));
 	}
 }
@@ -115,12 +130,12 @@ function styloglossusLR(element) {
 	//change slider Value: 
     document.getElementById("sliderValue"+sliderNumber).innerHTML = sliderValue;
 	//change left and right slider Value:
+	document.getElementById("sliderValue14").innerHTML = sliderValue;
 	document.getElementById("sliderValue15").innerHTML = sliderValue;
-	document.getElementById("sliderValue16").innerHTML = sliderValue;
 	//move  left and right slider position
+	document.getElementById("slider14").value = sliderValue;
 	document.getElementById("slider15").value = sliderValue;
-	document.getElementById("slider16").value = sliderValue;
-    for(var i = 15; i<17; i++){
+    for(var i = 14; i<16; i++){
 		updateSliderPWM(document.getElementById("slider"+i.toString()));
 	}
 }
@@ -131,12 +146,12 @@ function palatoglossusLR(element) {
 	//change slider Value: 
     document.getElementById("sliderValue"+sliderNumber).innerHTML = sliderValue;
 	//change left and right slider Value:
+	document.getElementById("sliderValue16").innerHTML = sliderValue;
 	document.getElementById("sliderValue17").innerHTML = sliderValue;
-	document.getElementById("sliderValue18").innerHTML = sliderValue;
 	//move  left and right slider position
+	document.getElementById("slider16").value = sliderValue;
 	document.getElementById("slider17").value = sliderValue;
-	document.getElementById("slider18").value = sliderValue;
-    for(var i = 17; i<19; i++){
+    for(var i = 16; i<18; i++){
 		updateSliderPWM(document.getElementById("slider"+i.toString()));
 	}
 }
@@ -147,12 +162,12 @@ function superiorInferior(element) {
 	//change slider Value: 
     document.getElementById("sliderValue"+sliderNumber).innerHTML = sliderValue;
 	//change left and right slider Value:
+	document.getElementById("sliderValue20").innerHTML = sliderValue;
 	document.getElementById("sliderValue21").innerHTML = sliderValue;
-	document.getElementById("sliderValue22").innerHTML = sliderValue;
 	//move  left and right slider position
+	document.getElementById("slider20").value = sliderValue;
 	document.getElementById("slider21").value = sliderValue;
-	document.getElementById("slider22").value = sliderValue;
-    for(var i = 21; i<23; i++){
+    for(var i = 20; i<22; i++){
 		updateSliderPWM(document.getElementById("slider"+i.toString()));
 	}
 }
