@@ -1,19 +1,19 @@
-muscle					|slider #|gpio pin
-Genioglossus Anterior	|10		 |
-Genioglossus Posterior	|11		 |
-Hyoglossus Left			|12		 |
-Hyoglossus Right		|13		 |
-Styloglossus Left		|14		 |
-Styloglossus Right		|15		 |
-Palatoglossus Left		|16		 |
-Palatoglossus Right		|17		 |
-Transversus				|18		 |
-Verticalis				|19		 |
-Superior Longitudinal	|20		 |
-Inferior Longitudinal	|21		 |
+muscle					        |slider #|gpio pin
+Genioglossus Anterior	  |10		   |
+Genioglossus Posterior	|11		   |
+Hyoglossus Left			    |12		   |
+Hyoglossus Right		    |13		   |
+Styloglossus Left		    |14		   |
+Styloglossus Right	  	|15		   |
+Palatoglossus Left		  |16		   |
+Palatoglossus Right		  |17		   |
+Transversus				      |18		   |
+Verticalis				      |19		   |
+Superior Longitudinal	  |20		   |
+Inferior Longitudinal	  |21		   |
 
-Genioglossus Ant&Post	|22		|n/a
-Hyoglossus L&R			|23		|n/a
-Styloglossus L&R		|24		|n/a
-Palatoglossus L&R		|25		|n/a
-Superior & Inferior		|26		|n/a
+Genioglossus Ant&Post	  |22		   |n/a
+Hyoglossus L&R			    |23		   |n/a
+Styloglossus L&R		    |24		   |n/a
+Palatoglossus L&R		    |25		   |n/a
+Superior & Inferior		  |26		   |n/a
