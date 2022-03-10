@@ -18,16 +18,15 @@
 		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider10">
 		<p>   Value: <span id="sliderValue10"></span></p>
 		</div>
-		
-		<h4 style=" margin-top:0;">Middle</h4>
+		<h4 style=" margin-top:0;">Posterior</h4>
 		<div class="slidecontainer">
 		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider11">
 		<p>   Value: <span id="sliderValue11"></span></p>
 		</div>
-		<h4 style=" margin-top:0;">Posterior</h4>
+		<h4 style=" margin-top:0;">Anterior & Posterior</h4>
 		<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider12">
-		<p>   Value: <span id="sliderValue12"></span></p>
+		<input type="range" onchange="genioAP(this)" min="0" max="180" value="0" class="slider" id="slider22">
+		<p>   Value: <span id="sliderValue22"></span></p>
 		</div>
 		
 		</div>
@@ -35,13 +34,13 @@
 		<h3 style="margin-bottom:0; margin-top:0;">Hyoglossus</h3>
 		<h4>Left</h4>
 		<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider13">
-		<p>   Value: <span id="sliderValue13"></span></p>
+		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider12">
+		<p>   Value: <span id="sliderValue12"></span></p>
 		</div>
 		<h4>Right</h4>
 		<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider14">
-		<p>   Value: <span id="sliderValue14"></span></p>
+		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider13">
+		<p>   Value: <span id="sliderValue13"></span></p>
 		</div>
 		<h4>Left & Right</h4>
 		<div class="slidecontainer">
@@ -55,13 +54,13 @@
 		<h3 style="margin-bottom:0; margin-top:0;">Styloglossus</h3>
 		<h4>Left</h4>
 		<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider15">
-		<p>Value: <span id="sliderValue15"></span></p>
+		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider14">
+		<p>Value: <span id="sliderValue14"></span></p>
 		</div>
 		<h4>Right</h4>
 		<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider16">
-		<p>Value: <span id="sliderValue16"></span></p>
+		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider15">
+		<p>Value: <span id="sliderValue15"></span></p>
 		</div>
 		<h4>Left & Right</h4>
 		<div class="slidecontainer">
@@ -74,13 +73,13 @@
 		<h3 style="margin-bottom:0; margin-top:0;">Palatoglossus</h3>
 		<h4>Left</h4>
 		<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider17">
-		<p>Value: <span id="sliderValue17"></span></p>
+		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider16">
+		<p>Value: <span id="sliderValue16"></span></p>
 		</div>
 		<h4>Right</h4>
 		<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider18">
-		<p>Value: <span id="sliderValue18"></span></p>
+		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider17">
+		<p>Value: <span id="sliderValue17"></span></p>
 		</div>
 		<h4>Left & Right</h4>
 		<div class="slidecontainer">
@@ -97,13 +96,21 @@
 		<div class="grid-Intmuscle">
 		<h3 style="margin-top:0;">Transversus</h3>
 		<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider19">
-		<p>Value: <span id="sliderValue19"></span></p>
+		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider18">
+		<p>Value: <span id="sliderValue18"></span></p>
 		</div>	
 		</div>
 		
 		<div class="grid-Intmuscle">
 		<h3 style="margin-top:0;">Verticalis</h3>
+		<div class="slidecontainer">
+		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider19">
+		<p>Value: <span id="sliderValue19"></span></p>
+		</div>
+		</div>
+		
+		<div class="grid-Intmuscle">
+		<h3 style=" margin-top:0;">Superior Longitudinal</h3>
 		<div class="slidecontainer">
 		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider20">
 		<p>Value: <span id="sliderValue20"></span></p>
@@ -111,18 +118,10 @@
 		</div>
 		
 		<div class="grid-Intmuscle">
-		<h3 style=" margin-top:0;">Superior Longitudinal</h3>
+		<h3 style=" margin-top:0;">Inferior Longitudinal</h3>
 		<div class="slidecontainer">
 		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider21">
 		<p>Value: <span id="sliderValue21"></span></p>
-		</div>
-		</div>
-		
-		<div class="grid-Intmuscle">
-		<h3 style=" margin-top:0;">Inferior Longitudinal</h3>
-		<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider22">
-		<p>Value: <span id="sliderValue22"></span></p>
 		</div>
 		</div>
 		<div class="grid-Intmuscle">
