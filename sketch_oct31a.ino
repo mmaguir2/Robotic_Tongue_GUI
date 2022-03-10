@@ -23,26 +23,40 @@
 // TFT_SCLK and TFT_MOSI the routine presumes we are using hardware SPI and internally uses 13 and 11
 Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS,  TFT_DC, TFT_RST);  
 
+#define DELAYTIME     250
+
 //wifi reconnect variables
 unsigned long previousMillis = 0;
 unsigned long interval = 30000;
 
-Servo servo1;
-Servo servo2;
-Servo servo3;
-Servo servo4;
-Servo servo5;
-Servo servo6;
-Servo servo7;
+Servo servo10;
+Servo servo11;
+Servo servo12;
+Servo servo13;
+Servo servo14;
+Servo servo15;
+Servo servo16;
+Servo servo17;
+Servo servo18;
+Servo servo19;
+Servo servo20;
+Servo servo21;
+Servo servo22;
 
 static const int LED = 33;
-static const int servo1Pin = 21;
-static const int servo2Pin = 13;
-static const int servo3Pin = 27;
-static const int servo4Pin = 3;
-static const int servo5Pin = 19;
-//static const int servo6Pin = 15;
-//static const int servo7Pin = 17;
+static const int servo10Pin = 21;
+static const int servo11Pin = 13;
+static const int servo12Pin = 27;
+static const int servo13Pin = 12;
+static const int servo14Pin = 19;
+static const int servo15Pin = 14;
+static const int servo16Pin = 26;
+static const int servo17Pin = 25;
+static const int servo18Pin = 2;
+static const int servo19Pin = 32;
+static const int servo20Pin = 35;
+static const int servo21Pin = 34;
+static const int servo22Pin = 5;
 
 // Replace with your network credentials
 const char* ssid = "ncsu";//"Pack House";
@@ -59,8 +73,14 @@ String sliderValue11 = "0";
 String sliderValue12 = "0";
 String sliderValue13 = "0";
 String sliderValue14 = "0";
-//String sliderValue15 = "0";
-//String sliderValue16 = "0";
+String sliderValue15 = "0";
+String sliderValue16 = "0";
+String sliderValue17 = "0";
+String sliderValue18 = "0";
+String sliderValue19 = "0";
+String sliderValue20 = "0";
+String sliderValue21 = "0";
+String sliderValue22 = "0";
 
 //Json Variable to Hold Slider Values
 JSONVar sliderValues;
@@ -71,8 +91,14 @@ String getSliderValues(){
   sliderValues["sliderValue12"] = String(sliderValue12);
   sliderValues["sliderValue13"] = String(sliderValue13);
   sliderValues["sliderValue14"] = String(sliderValue14);
-  //sliderValues["sliderValue15"] = String(sliderValue15);
-  //sliderValues["sliderValue16"] = String(sliderValue16);
+  sliderValues["sliderValue15"] = String(sliderValue15);
+  sliderValues["sliderValue16"] = String(sliderValue16);
+  sliderValues["sliderValue17"] = String(sliderValue17);
+  sliderValues["sliderValue18"] = String(sliderValue18);
+  sliderValues["sliderValue19"] = String(sliderValue19);
+  sliderValues["sliderValue20"] = String(sliderValue20);
+  sliderValues["sliderValue21"] = String(sliderValue21);
+  sliderValues["sliderValue22"] = String(sliderValue22);
   
   String jsonString = JSON.stringify(sliderValues);
   return jsonString;
@@ -112,6 +138,54 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
     }
     if (message.indexOf("14s") >= 0) {
       sliderValue14 = message.substring(2);
+      
+      Serial.print(getSliderValues());
+      notifyClients(getSliderValues());
+    }
+    if (message.indexOf("15s") >= 0) {
+      sliderValue15 = message.substring(2);
+      
+      Serial.print(getSliderValues());
+      notifyClients(getSliderValues());
+    }
+    if (message.indexOf("16s") >= 0) {
+      sliderValue16 = message.substring(2);
+      
+      Serial.print(getSliderValues());
+      notifyClients(getSliderValues());
+    }
+     if (message.indexOf("17s") >= 0) {
+      sliderValue17 = message.substring(2);
+      
+      Serial.print(getSliderValues());
+      notifyClients(getSliderValues());
+    }
+     if (message.indexOf("18s") >= 0) {
+      sliderValue18 = message.substring(2);
+      
+      Serial.print(getSliderValues());
+      notifyClients(getSliderValues());
+    }
+    if (message.indexOf("19s") >= 0) {
+      sliderValue19 = message.substring(2);
+      
+      Serial.print(getSliderValues());
+      notifyClients(getSliderValues());
+    }
+    if (message.indexOf("20s") >= 0) {
+      sliderValue20 = message.substring(2);
+      
+      Serial.print(getSliderValues());
+      notifyClients(getSliderValues());
+    }
+    if (message.indexOf("21s") >= 0) {
+      sliderValue21 = message.substring(2);
+      
+      Serial.print(getSliderValues());
+      notifyClients(getSliderValues());
+    }
+    if (message.indexOf("22s") >= 0) {
+      sliderValue22 = message.substring(2);
       
       Serial.print(getSliderValues());
       notifyClients(getSliderValues());
@@ -224,11 +298,19 @@ void initWebSocket() {
 }
 
 void attachServos(){
-  servo1.attach(servo1Pin);
-  servo2.attach(servo2Pin);
-  servo3.attach(servo3Pin);
-  servo4.attach(servo4Pin);
-  servo5.attach(servo5Pin);
+  servo10.attach(servo10Pin);
+  servo11.attach(servo11Pin);
+  servo12.attach(servo12Pin);
+  servo13.attach(servo13Pin);
+  servo14.attach(servo14Pin);
+  servo15.attach(servo15Pin);
+  servo16.attach(servo16Pin);
+  servo17.attach(servo17Pin);
+  servo18.attach(servo18Pin);
+  servo19.attach(servo19Pin);
+  servo20.attach(servo20Pin);
+  servo21.attach(servo21Pin);
+  servo22.attach(servo22Pin);
 }
 
 void setup() {
@@ -256,6 +338,20 @@ void setup() {
   
 }
 
+int previousValue10 = 0;
+int previousValue11 = 0;
+int previousValue12 = 0;
+int previousValue13 = 0;
+int previousValue14 = 0;
+int previousValue15 = 0;
+int previousValue16 = 0;
+int previousValue17 = 0;
+int previousValue18 = 0;
+int previousValue19 = 0;
+int previousValue20 = 0;
+int previousValue21 = 0;
+int previousValue22 = 0;
+
 void loop() {
   // put your main code here, to run repeatedly:
   //servo code
@@ -268,11 +364,74 @@ void loop() {
   //Serial.println(sliderValue12.substring(1).toInt());
   //led right here idk why but need to move it somewhere else
   digitalWrite(LED, HIGH); 
-  servo1.write(sliderValue10.substring(1).toInt()); 
-  servo2.write(sliderValue11.substring(1).toInt()); 
-  servo3.write(sliderValue12.substring(1).toInt()); 
-  servo4.write(sliderValue13.substring(1).toInt()); 
-  servo5.write(sliderValue14.substring(1).toInt()); 
+  if(sliderValue10.substring(1).toInt() != previousValue10){
+    delay(DELAYTIME);
+    previousValue10 = sliderValue10.substring(1).toInt(); 
+    servo10.write(sliderValue10.substring(1).toInt()); 
+  }
+  if(sliderValue11.substring(1).toInt() != previousValue11){
+    delay(DELAYTIME);
+    previousValue11 = sliderValue11.substring(1).toInt(); 
+    servo11.write(sliderValue11.substring(1).toInt()); 
+  }
+  if(sliderValue12.substring(1).toInt() != previousValue12){
+    delay(DELAYTIME);
+    previousValue12 = sliderValue12.substring(1).toInt(); 
+    servo12.write(sliderValue12.substring(1).toInt()); 
+  }
+  if(sliderValue13.substring(1).toInt() != previousValue13){
+    delay(DELAYTIME);
+    previousValue13 = sliderValue13.substring(1).toInt(); 
+    servo13.write(sliderValue13.substring(1).toInt()); 
+  }
+  if(sliderValue14.substring(1).toInt() != previousValue14){
+    delay(DELAYTIME);
+    previousValue14 = sliderValue14.substring(1).toInt(); 
+    servo14.write(sliderValue14.substring(1).toInt()); 
+  }
+  if(sliderValue15.substring(1).toInt() != previousValue15){
+    delay(DELAYTIME);
+    previousValue15 = sliderValue15.substring(1).toInt(); 
+    servo15.write(sliderValue15.substring(1).toInt()); 
+  }
+  if(sliderValue16.substring(1).toInt() != previousValue16){
+    delay(DELAYTIME);
+    previousValue16 = sliderValue16.substring(1).toInt(); 
+    servo16.write(sliderValue16.substring(1).toInt()); 
+  }
+  if(sliderValue17.substring(1).toInt() != previousValue17){
+    delay(DELAYTIME);
+    previousValue17 = sliderValue17.substring(1).toInt(); 
+    servo17.write(sliderValue17.substring(1).toInt()); 
+  }
+  if(sliderValue18.substring(1).toInt() != previousValue18){
+    delay(DELAYTIME);
+    previousValue18 = sliderValue18.substring(1).toInt(); 
+    servo18.write(sliderValue18.substring(1).toInt()); 
+  }
+  if(sliderValue19.substring(1).toInt() != previousValue19){
+    delay(DELAYTIME);
+    previousValue19 = sliderValue19.substring(1).toInt(); 
+    servo19.write(sliderValue19.substring(1).toInt()); 
+  }
+  if(sliderValue20.substring(1).toInt() != previousValue20){
+    delay(DELAYTIME);
+    previousValue20 = sliderValue20.substring(1).toInt(); 
+    servo20.write(sliderValue20.substring(1).toInt()); 
+  }
+  if(sliderValue21.substring(1).toInt() != previousValue21){
+    delay(DELAYTIME);
+    previousValue21 = sliderValue21.substring(1).toInt(); 
+    servo21.write(sliderValue21.substring(1).toInt()); 
+  }
+  if(sliderValue22.substring(1).toInt() != previousValue22){
+    delay(DELAYTIME);
+    previousValue22 = sliderValue22.substring(1).toInt(); 
+    servo22.write(sliderValue22.substring(1).toInt()); 
+  }
+  
+  
+ 
 
   //display
   //display to print out the ip address
