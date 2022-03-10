@@ -39,8 +39,6 @@ Servo servo16;
 Servo servo17;
 Servo servo18;
 Servo servo19;
-Servo servo20;
-Servo servo21;
 Servo servo22;
 
 static const int LED = 33;
@@ -54,8 +52,6 @@ static const int servo16Pin = 26;
 static const int servo17Pin = 25;
 static const int servo18Pin = 2;
 static const int servo19Pin = 32;
-static const int servo20Pin = 35;
-static const int servo21Pin = 34;
 static const int servo22Pin = 5;
 
 // Replace with your network credentials
@@ -78,8 +74,6 @@ String sliderValue16 = "0";
 String sliderValue17 = "0";
 String sliderValue18 = "0";
 String sliderValue19 = "0";
-String sliderValue20 = "0";
-String sliderValue21 = "0";
 String sliderValue22 = "0";
 
 //Json Variable to Hold Slider Values
@@ -96,8 +90,6 @@ String getSliderValues(){
   sliderValues["sliderValue17"] = String(sliderValue17);
   sliderValues["sliderValue18"] = String(sliderValue18);
   sliderValues["sliderValue19"] = String(sliderValue19);
-  sliderValues["sliderValue20"] = String(sliderValue20);
-  sliderValues["sliderValue21"] = String(sliderValue21);
   sliderValues["sliderValue22"] = String(sliderValue22);
   
   String jsonString = JSON.stringify(sliderValues);
@@ -168,18 +160,6 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
     }
     if (message.indexOf("19s") >= 0) {
       sliderValue19 = message.substring(2);
-      
-      Serial.print(getSliderValues());
-      notifyClients(getSliderValues());
-    }
-    if (message.indexOf("20s") >= 0) {
-      sliderValue20 = message.substring(2);
-      
-      Serial.print(getSliderValues());
-      notifyClients(getSliderValues());
-    }
-    if (message.indexOf("21s") >= 0) {
-      sliderValue21 = message.substring(2);
       
       Serial.print(getSliderValues());
       notifyClients(getSliderValues());
@@ -308,8 +288,6 @@ void attachServos(){
   servo17.attach(servo17Pin);
   servo18.attach(servo18Pin);
   servo19.attach(servo19Pin);
-  servo20.attach(servo20Pin);
-  servo21.attach(servo21Pin);
   servo22.attach(servo22Pin);
 }
 
@@ -348,8 +326,6 @@ int previousValue16 = 0;
 int previousValue17 = 0;
 int previousValue18 = 0;
 int previousValue19 = 0;
-int previousValue20 = 0;
-int previousValue21 = 0;
 int previousValue22 = 0;
 
 void loop() {
@@ -413,16 +389,6 @@ void loop() {
     delay(DELAYTIME);
     previousValue19 = sliderValue19.substring(1).toInt(); 
     servo19.write(sliderValue19.substring(1).toInt()); 
-  }
-  if(sliderValue20.substring(1).toInt() != previousValue20){
-    delay(DELAYTIME);
-    previousValue20 = sliderValue20.substring(1).toInt(); 
-    servo20.write(sliderValue20.substring(1).toInt()); 
-  }
-  if(sliderValue21.substring(1).toInt() != previousValue21){
-    delay(DELAYTIME);
-    previousValue21 = sliderValue21.substring(1).toInt(); 
-    servo21.write(sliderValue21.substring(1).toInt()); 
   }
   if(sliderValue22.substring(1).toInt() != previousValue22){
     delay(DELAYTIME);
