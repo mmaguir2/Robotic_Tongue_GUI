@@ -1,18 +1,18 @@
 // Complete project details: https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/
 
-var gateway = `ws://${window.location.hostname}/ws`;
-var websocket;
-window.addEventListener('load', onload);
+var gateway = `ws://${window.location.hostname}/ws`; //[1]
+var websocket;//[1]
+window.addEventListener('load', onload); //[1]
 
-function onload(event) {
-    initWebSocket();
+function onload(event) { //[1]
+    initWebSocket();  
 }
 
-function getValues(){
+function getValues(){  //[1]
     websocket.send("getValues");
 }
 
-function initWebSocket() {
+function initWebSocket() {  //[1]
     console.log('Trying to open a WebSocket connection…');
     websocket = new WebSocket(gateway);
     websocket.onopen = onOpen;
@@ -20,18 +20,18 @@ function initWebSocket() {
     websocket.onmessage = onMessage;
 }
 
-function onOpen(event) {
+function onOpen(event) {  //[1]
     console.log('Connection opened');
     getValues();
 }
 
-function onClose(event) {
+function onClose(event) {  //[1]
     console.log('Connection closed');
     setTimeout(initWebSocket, 2000);
 }
 
-function updateSliderPWM(element) {
-    var sliderNumber = element.id.charAt(element.id.length-2)+element.id.charAt(element.id.length-1);
+function updateSliderPWM(element) {  //[1]
+    var sliderNumber = element.id.charAt(element.id.length-2)+element.id.charAt(element.id.length-1); //Maritza changed this line
     var sliderValue = document.getElementById(element.id).value;
     document.getElementById("sliderValue"+sliderNumber).innerHTML = sliderValue;
     console.log(sliderValue);
@@ -40,7 +40,7 @@ function updateSliderPWM(element) {
 
 
 
-function onMessage(event) {
+function onMessage(event) {  //[1]
     console.log(event.data);
     var myObj = JSON.parse(event.data);
     var keys = Object.keys(myObj);
@@ -51,14 +51,14 @@ function onMessage(event) {
     }
 }
 
-function logoutButton() {
+function logoutButton() { //Nathan
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "/logout", true);
   xhr.send();
   setTimeout(function(){ window.open("/logged-out","_self"); }, 1000);
 }
 
-function resetButton(){
+function resetButton(){ //Maritza
 	for(var i=10; i<27;i++){
 	//changes slider Value: to zero
 	document.getElementById("sliderValue"+i.toString()).innerHTML = "0";
@@ -70,7 +70,7 @@ function resetButton(){
 	}
 }
 
-function bOne(){
+function bOne(){ //Maritza
 	//changes slider Value: to 5
 	document.getElementById("sliderValue19").innerHTML = "180";
 	//changes slider to postion 5
@@ -83,7 +83,7 @@ function bOne(){
 	updateSliderPWM(document.getElementById("slider20"));
 }
 //One slider moving two values---------------------------------------------------------------------------------------------------
-function genioAP(element) {
+function genioAP(element) { //Maritza
     var sliderNumber = element.id.charAt(element.id.length-2)+element.id.charAt(element.id.length-1);
     var sliderValue = document.getElementById(element.id).value;
 	//change slider Value: 
@@ -98,7 +98,7 @@ function genioAP(element) {
 		updateSliderPWM(document.getElementById("slider"+i.toString()));
 	}
 }
-function hyoglossusLR(element) {
+function hyoglossusLR(element) { //Maritza
     var sliderNumber = element.id.charAt(element.id.length-2)+element.id.charAt(element.id.length-1);
     var sliderValue = document.getElementById(element.id).value;
 	//change slider Value: 
@@ -114,7 +114,7 @@ function hyoglossusLR(element) {
 	}
 }
 
-function styloglossusLR(element) {
+function styloglossusLR(element) {//Maritza
     var sliderNumber = element.id.charAt(element.id.length-2)+element.id.charAt(element.id.length-1);
     var sliderValue = document.getElementById(element.id).value;
 	//change slider Value: 
@@ -130,7 +130,7 @@ function styloglossusLR(element) {
 	}
 }
 
-function palatoglossusLR(element) {
+function palatoglossusLR(element) {//Maritza
     var sliderNumber = element.id.charAt(element.id.length-2)+element.id.charAt(element.id.length-1);
     var sliderValue = document.getElementById(element.id).value;
 	//change slider Value: 
@@ -146,7 +146,7 @@ function palatoglossusLR(element) {
 	}
 }
 
-function superiorInferior(element) {
+function superiorInferior(element) {//Maritza
     var sliderNumber = element.id.charAt(element.id.length-2)+element.id.charAt(element.id.length-1);
     var sliderValue = document.getElementById(element.id).value;
 	//change slider Value: 
