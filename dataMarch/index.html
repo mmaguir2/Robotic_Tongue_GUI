@@ -4,13 +4,38 @@
 <head>
     <title>Robotic Tongue UI</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css"> <!╌CONNECT HTML TO CSS FILE╌>
 </head>
 <body>
 <h1> Robotic Tongue</h1>
+<!╌ The user interface is made up of many sliders. Here is a table showing what slider number and gpio pin 
+	corresponds with each muscle.
+	
+muscle|slider #|gpio pin
+Genioglossus Anterior	|10|21
+Genioglossus Posterior|11|13
+Hyoglossus Left	|12|27
+Hyoglossus Right|13|12
+Styloglossus Left|14|19
+Styloglossus Right|15|14
+Palatoglossus Left|16|26
+Palatoglossus Right|17|25
+Transversus|18|2
+Verticalis|19|32
+Superior Longitudinal|20|5
+Inferior Longitudinal|21|33
 
+Genioglossus Ant&Post|22|n/a
+Hyoglossus L&R|23|n/a
+Styloglossus L&R|24|n/a
+Palatoglossus L&R|25|n/a
+Superior & Inferior|26|n/a
+╌>
+<!╌ EXTRINSIC MUSCLE SECTION╌>
 	<h2 style="margin-bottom:0; margin-top:0;">Extrinsic Muscles </h2>
 	<div class = "grid-blocks">
+		
+		<!╌ GENIOGLOSSUS╌>
 		<div class="grid-Exmuscle">
 		<h3 style="margin-bottom:0; margin-top:0;">Genioglossus</h3>
 		<h4 >Anterior</h4>
@@ -28,8 +53,9 @@
 		<input type="range" onchange="genioAP(this)" min="0" max="180" value="0" class="slider" id="slider22">
 		<p>   Value: <span id="sliderValue22"></span></p>
 		</div>
-		
 		</div>
+		
+		<!╌ HYOGLOSSUS╌>
 		<div class="grid-Exmuscle">
 		<h3 style="margin-bottom:0; margin-top:0;">Hyoglossus</h3>
 		<h4>Left</h4>
@@ -49,7 +75,7 @@
 		</div>
 		</div>
 		
-		
+		<!╌ STYLOGLOSSUS╌>
 		<div class="grid-Exmuscle">
 		<h3 style="margin-bottom:0; margin-top:0;">Styloglossus</h3>
 		<h4>Left</h4>
@@ -67,8 +93,9 @@
 		<input type="range" onchange="styloglossusLR(this)" min="0" max="180" value="0" class="slider" id="slider24">
 		<p>   Value: <span id="sliderValue24"></span></p>
 		</div>
-		
 		</div>
+		
+		<!╌ PALATOGLOSSUS╌>
 		<div class="grid-Exmuscle">
 		<h3 style="margin-bottom:0; margin-top:0;">Palatoglossus</h3>
 		<h4>Left</h4>
@@ -86,13 +113,14 @@
 		<input type="range" onchange="palatoglossusLR(this)" min="0" max="180" value="0" class="slider" id="slider25">
 		<p>   Value: <span id="sliderValue25"></span></p>
 		</div>
-		
 		</div>
 	</div>
 
-
+<!╌ INTRINSIC MUSCLE SECTION╌>
 <h2 style="margin-bottom:0;">Intrinsic Muscles </h2>
 		<div class = "grid-blocks">
+			
+		<!╌ TRANSVERSUS╌>
 		<div class="grid-Intmuscle">
 		<h3 style="margin-top:0;">Transversus</h3>
 		<div class="slidecontainer">
@@ -101,6 +129,7 @@
 		</div>	
 		</div>
 		
+		<!╌ VERTICALIS╌>
 		<div class="grid-Intmuscle">
 		<h3 style="margin-top:0;">Verticalis</h3>
 		<div class="slidecontainer">
@@ -109,6 +138,7 @@
 		</div>
 		</div>
 		
+		<!╌ SUPERIOR LONGITUDINAL╌>
 		<div class="grid-Intmuscle">
 		<h3 style=" margin-top:0;">Superior Longitudinal</h3>
 		<div class="slidecontainer">
@@ -117,6 +147,7 @@
 		</div>
 		</div>
 		
+		<!╌ INFERIOR LONGITUDINAL╌>
 		<div class="grid-Intmuscle">
 		<h3 style=" margin-top:0;">Inferior Longitudinal</h3>
 		<div class="slidecontainer">
@@ -124,6 +155,8 @@
 		<p>Value: <span id="sliderValue21"></span></p>
 		</div>
 		</div>
+		
+		<!╌ SUPERIOR & INFERIOR LONGITUDINAL SLIDER╌>
 		<div class="grid-Intmuscle">
 		<h3 style=" margin-top:0;">Superior & Inferior </h3>
 		<div class="slidecontainer">
@@ -132,9 +165,12 @@
 		</div>
 		</div>
 		</div>
+	
+<!╌ SAVED CONFIGURATIONS SECTION╌>
 <h2 style="margin-bottom:0;">Saved Movements </h2>
 <div class = "SavedConfig">
 		<h3>Click any button to apply movement!</h3>
+		<!╌ LIST OF BUTTONS╌>
 		<button class="UniqueButton" onclick = "bOne()">L movement</button>
 		<button class="UniqueButton">2</button>
 		<button class="UniqueButton">3</button>
@@ -142,9 +178,13 @@
 		<button class="UniqueButton">5</button>
 		<button class="UniqueButton">6</button>
 </div>
+	
+<!╌ REST BUTTON╌>
 <button  class="bottomButtons" onclick = "resetButton()" >Reset</button>
-
+	
+<!╌ LOGOUT BUTTON╌>
 <button class="bottomButtons" onclick="logoutButton()">Logout</button>
-    <script src="script.js"></script>
+	
+<script src="script.js"></script> <!╌CONNECT HTML TO JAVASCRIPT FILE╌>
 </body>
 </html>
