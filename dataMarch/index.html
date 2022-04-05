@@ -4,11 +4,11 @@
 <head>
     <title>Robotic Tongue UI</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="style.css"> <!╌CONNECT HTML TO CSS FILE╌>
+    <link rel="stylesheet" type="text/css" href="style.css"> <!--CONNECT HTML TO CSS FILE-->
 </head>
 <body>
 <h1> Robotic Tongue</h1>
-<!╌ The user interface is made up of many sliders. Here is a table showing what slider number and gpio pin 
+<!-- The user interface is made up of many sliders. Here is a table showing what slider number and gpio pin 
 	corresponds with each muscle.
 	
 muscle|slider #|gpio pin
@@ -30,12 +30,12 @@ Hyoglossus L&R|23|n/a
 Styloglossus L&R|24|n/a
 Palatoglossus L&R|25|n/a
 Superior & Inferior|26|n/a
-╌>
-<!╌ EXTRINSIC MUSCLE SECTION╌>
+-->
+<!-- EXTRINSIC MUSCLE SECTION-->
 	<h2 style="margin-bottom:0; margin-top:0;">Extrinsic Muscles </h2>
 	<div class = "grid-blocks">
 		
-		<!╌ GENIOGLOSSUS╌>
+		<!-- GENIOGLOSSUS-->
 		<div class="grid-Exmuscle">
 		<h3 style="margin-bottom:0; margin-top:0;">Genioglossus</h3>
 		<h4 >Anterior</h4>
@@ -55,7 +55,7 @@ Superior & Inferior|26|n/a
 		</div>
 		</div>
 		
-		<!╌ HYOGLOSSUS╌>
+		<!-- HYOGLOSSUS-->
 		<div class="grid-Exmuscle">
 		<h3 style="margin-bottom:0; margin-top:0;">Hyoglossus</h3>
 		<h4>Left</h4>
@@ -75,7 +75,7 @@ Superior & Inferior|26|n/a
 		</div>
 		</div>
 		
-		<!╌ STYLOGLOSSUS╌>
+		<!-- STYLOGLOSSUS-->
 		<div class="grid-Exmuscle">
 		<h3 style="margin-bottom:0; margin-top:0;">Styloglossus</h3>
 		<h4>Left</h4>
@@ -95,7 +95,7 @@ Superior & Inferior|26|n/a
 		</div>
 		</div>
 		
-		<!╌ PALATOGLOSSUS╌>
+		<!-- PALATOGLOSSUS-->
 		<div class="grid-Exmuscle">
 		<h3 style="margin-bottom:0; margin-top:0;">Palatoglossus</h3>
 		<h4>Left</h4>
@@ -116,11 +116,11 @@ Superior & Inferior|26|n/a
 		</div>
 	</div>
 
-<!╌ INTRINSIC MUSCLE SECTION╌>
+<!-- INTRINSIC MUSCLE SECTION-->
 <h2 style="margin-bottom:0;">Intrinsic Muscles </h2>
 		<div class = "grid-blocks">
 			
-		<!╌ TRANSVERSUS╌>
+		<!-- TRANSVERSUS-->
 		<div class="grid-Intmuscle">
 		<h3 style="margin-top:0;">Transversus</h3>
 		<div class="slidecontainer">
@@ -129,7 +129,7 @@ Superior & Inferior|26|n/a
 		</div>	
 		</div>
 		
-		<!╌ VERTICALIS╌>
+		<!-- VERTICALIS-->
 		<div class="grid-Intmuscle">
 		<h3 style="margin-top:0;">Verticalis</h3>
 		<div class="slidecontainer">
@@ -138,7 +138,7 @@ Superior & Inferior|26|n/a
 		</div>
 		</div>
 		
-		<!╌ SUPERIOR LONGITUDINAL╌>
+		<!-- SUPERIOR LONGITUDINAL-->
 		<div class="grid-Intmuscle">
 		<h3 style=" margin-top:0;">Superior Longitudinal</h3>
 		<div class="slidecontainer">
@@ -147,7 +147,7 @@ Superior & Inferior|26|n/a
 		</div>
 		</div>
 		
-		<!╌ INFERIOR LONGITUDINAL╌>
+		<!-- INFERIOR LONGITUDINAL-->
 		<div class="grid-Intmuscle">
 		<h3 style=" margin-top:0;">Inferior Longitudinal</h3>
 		<div class="slidecontainer">
@@ -156,7 +156,7 @@ Superior & Inferior|26|n/a
 		</div>
 		</div>
 		
-		<!╌ SUPERIOR & INFERIOR LONGITUDINAL SLIDER╌>
+		<!--SUPERIOR & INFERIOR LONGITUDINAL SLIDER-->
 		<div class="grid-Intmuscle">
 		<h3 style=" margin-top:0;">Superior & Inferior </h3>
 		<div class="slidecontainer">
@@ -166,11 +166,11 @@ Superior & Inferior|26|n/a
 		</div>
 		</div>
 	
-<!╌ SAVED CONFIGURATIONS SECTION╌>
+<!-- SAVED CONFIGURATIONS SECTION-->
 <h2 style="margin-bottom:0;">Saved Movements </h2>
 <div class = "SavedConfig">
 		<h3>Click any button to apply movement!</h3>
-		<!╌ LIST OF BUTTONS╌>
+		<!--LIST OF BUTTONS-->
 		<button class="UniqueButton" onclick = "bOne()">L movement</button>
 		<button class="UniqueButton">2</button>
 		<button class="UniqueButton">3</button>
@@ -179,12 +179,12 @@ Superior & Inferior|26|n/a
 		<button class="UniqueButton">6</button>
 </div>
 	
-<!╌ REST BUTTON╌>
+<!-- REST BUTTON-->
 <button  class="bottomButtons" onclick = "resetButton()" >Reset</button>
 	
-<!╌ LOGOUT BUTTON╌>
+<!-- LOGOUT BUTTON-->
 <button class="bottomButtons" onclick="logoutButton()">Logout</button>
 	
-<script src="script.js"></script> <!╌CONNECT HTML TO JAVASCRIPT FILE╌>
+<script src="script.js"></script> <!--CONNECT HTML TO JAVASCRIPT FILE-->
 </body>
 </html>
