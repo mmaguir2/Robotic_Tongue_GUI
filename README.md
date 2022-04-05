@@ -21,7 +21,10 @@ How to set up Arduino IDE to run files on esp32:<br>
 -Install the Arduino IDE here https://www.arduino.cc/en/software<br>
 -Step 3 and 4 from this tutorial: https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/<br>
 
-Credits: <br>
--Majority of java.js file from https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/#css-f (reset button function by Maritza) <br>
--Majority of arduino sketch file from https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/#css-f (servo edits by Maritza) <br>
--Logout.html file by Nathan <br>
+References <br>
+[1] R. Santos and S. Santos. "ESP32 Web Server (WebSocket) with Multiple <br>
+Sliders: Control LEDs Brightness (PWM)" randomnerdtutorials.com.  <br>
+https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/ (accessed April 5, 2022). <br>
+
+Code from [1] is marked with [1].
+
