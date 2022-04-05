@@ -1,3 +1,8 @@
+/* CSS FILE: 
+            The CSS file changes the color, font, and layout of the contents in the HTML file. 
+*/
+
+/* INTRINSIC AND EXTRINSIC SECTION BLOCK GRID LAYOUT*/
 .grid-blocks{
   display: grid;
   grid-template-columns: auto auto;
@@ -5,6 +10,7 @@
   grid-gap: 10px;
   
 }
+/* INTRINSIC AND EXTRINSIC SECTION LAYOUT*/
 .grid-Exmuscle, .grid-Intmuscle {
   text-align: left;
   border-radius: 12px;
@@ -16,15 +22,18 @@
   color: black;
   margin: 5px;
 }
-
+/*EXTRINSIC SECTION COLOR*/
 .grid-Exmuscle {
   background-color: #FBD1B7;
  
 }
+/* INTRINSIC SECTION COLOR*/
 .grid-Intmuscle {
   background-color: #D4E2D4;
   
 }
+
+/*SAVED CONFIGURATION SECTION LAYOUT */
 .SavedConfig {
   background-color: #9DAB86;
   color: black;
@@ -37,6 +46,7 @@
   width: 95%;
 }
 
+/*SLIDER LAYOUT */
 .slider {
   -webkit-appearance: none;
   width: 100%;
@@ -62,6 +72,8 @@
   background: #000000;
   cursor: pointer;
 }
+
+/* SAVED CONFIGURATION BUTTONS*/
 .UniqueButton {
   background-color: #D4E2D4;
   border: none;
@@ -78,6 +90,8 @@
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
  
 }
+
+/*RESET & LOGOUT BUTTON */
 .bottomButtons {
   background-color: #FBD1B7;
   border: none;
