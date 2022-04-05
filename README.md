@@ -1,6 +1,6 @@
 # Robotic_Tongue_GUI
-User Interface Subsystem from Robotic Tongue Senior Design Project <br>
-Maritza Aguirre <br>
+User Interface Subsystem from Robotic Tongue Senior Design Project F21-S22 <br>
+Lead: Maritza Aguirre-Diaz <br>
 Nathan Chen <br>
  
 Senior Design Project Goal:   <br>
@@ -14,9 +14,9 @@ Senior Design Key Requirements: <br>
 ~Control muscle contraction percentage with user-interface** <br>
 ~Educates students and researchers on functions of each tongue muscle <br>
 
-
 How to use files: <br>
 The data folder consists of an HTML, CSS, and JavaScript files. These are the main files for the layout and function of the user interface. The data files need to be uploaded to the esp 32 SPIFFS <br>
+
 How to set up Arduino IDE to run files on esp32:<br>
 -Install the Arduino IDE here https://www.arduino.cc/en/software<br>
 -Step 3 and 4 from this tutorial: https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/<br>
