@@ -1,5 +1,8 @@
-// Complete project details: https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/
-
+/*References
+[1] R. Santos and S. Santos. "ESP32 Web Server (WebSocket) with Multiple 
+Sliders: Control LEDs Brightness (PWM)" randomnerdtutorials.com. 
+https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/ (accessed April 5, 2022).
+*/
 var gateway = `ws://${window.location.hostname}/ws`; //[1]
 var websocket;//[1]
 window.addEventListener('load', onload); //[1]
