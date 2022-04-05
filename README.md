@@ -16,10 +16,10 @@ Senior Design Key Requirements: <br>
 
 
 How to use files: <br>
-The data folder consists of an HTML, CSS, and JavaScript files. These are the main files for the layout and function of the user interface. The data files need to be uploaded to the esp 32 SPIFFS 
-How to set up Arduino IDE to run files on esp32:
--Install the Arduino IDE here https://www.arduino.cc/en/software
--Step 3 and 4 from this tutorial: https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/
+The data folder consists of an HTML, CSS, and JavaScript files. These are the main files for the layout and function of the user interface. The data files need to be uploaded to the esp 32 SPIFFS <br>
+How to set up Arduino IDE to run files on esp32:<br>
+-Install the Arduino IDE here https://www.arduino.cc/en/software<br>
+-Step 3 and 4 from this tutorial: https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/<br>
 
 Credits: <br>
 -Majority of java.js file from https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/#css-f (reset button function by Maritza) <br>
