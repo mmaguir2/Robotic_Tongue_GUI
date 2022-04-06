@@ -13,6 +13,7 @@
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <XTronical_ST7735.h> // Hardware-specific library
 
+//import communications library SPI protocol
 #include <SPI.h>
 // set up pins we are going to use to talk to the screen
 #define TFT_DC     15       // register select (stands for Data Control perhaps!)
@@ -23,12 +24,14 @@
 // TFT_SCLK and TFT_MOSI the routine presumes we are using hardware SPI and internally uses 13 and 11
 Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS,  TFT_DC, TFT_RST);  
 
+//set the delay time between each servo movement
 #define DELAYTIME     250
 
 //wifi reconnect variables
 unsigned long previousMillis = 0;
 unsigned long interval = 30000;
 
+//create servo objects
 Servo servo10;
 Servo servo11;
 Servo servo12;
@@ -42,7 +45,7 @@ Servo servo19;
 Servo servo20;
 Servo servo21;
 
-//static const int LED = 33;
+//set servo pins 
 static const int servo10Pin = 21;
 static const int servo11Pin = 13;
 static const int servo12Pin = 27;
@@ -56,9 +59,8 @@ static const int servo19Pin = 32;
 static const int servo20Pin = 5;
 static const int servo21Pin = 33;
 
-// Replace with your network credentials
-const char* ssid = "ncsu";//"Pack House";
-//const char* password = "thunkanddunk";
+//set network credentials - no password for NCSU 
+const char* ssid = "ncsu";
 
 // Create AsyncWebServer object on port 80
 AsyncWebServer server(80);
@@ -81,6 +83,7 @@ String sliderValue21 = "0";
 
 //Json Variable to Hold Slider Values
 JSONVar sliderValues;
+
 //Get Slider Values
 String getSliderValues(){
   sliderValues["sliderValue10"] = String(sliderValue10);
@@ -99,10 +102,13 @@ String getSliderValues(){
   String jsonString = JSON.stringify(sliderValues);
   return jsonString;
 }
+
+//notifies clients
 void notifyClients(String sliderValues) {
   ws.textAll(sliderValues);
 }
 
+//get websocket changes for each slider 
 void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
   AwsFrameInfo *info = (AwsFrameInfo*)arg;
   if (info->final && info->index == 0 && info->len == len && info->opcode == WS_TEXT) {
@@ -185,6 +191,8 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
     }
   }
 }
+
+//connects the websocket to the internet
 void onEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventType type, void *arg, uint8_t *data, size_t len) {
   switch (type) {
     case WS_EVT_CONNECT:
@@ -201,18 +209,22 @@ void onEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventType 
       break;
   }
 }
-//https passwords
+
+//password for the website
 const char* http_username = "admin";
 const char* http_password = "admin";
 const char* PARAM_INPUT_1 = "state";
 const int output = 2;
 
+//initialize the SPIFFS (on board esp32 memory)
 void initSPIFFS(){
   if(!SPIFFS.begin(true)){
     Serial.println("An Error has occurred while mounting SPIFFS");
     return;
   }
 }
+
+//initialize the WiFi
 void initWiFi() {
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid);//,password);
@@ -224,6 +236,7 @@ void initWiFi() {
   }
   Serial.println(WiFi.localIP());
   
+  //once the wifi conects, display the information for the wifi and website
   tft.print('\n');
   tft.print(WiFi.localIP());
   tft.print('\n');
@@ -240,6 +253,8 @@ void initWiFi() {
   tft.print('\n');
   tft.print("AC:67:B2:3C:D5:B8");
 }
+
+//initialize the main webpage
 void initWebPage(){
   // Route for root / web page
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
@@ -253,6 +268,8 @@ void initWebPage(){
     request->send(SPIFFS, "/style.css", "text/css");
   });
 }
+
+//initialize the logout webpage
 void initLogInAndOut(){
   server.on("/logout", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send(401);
@@ -281,12 +298,14 @@ void initLogInAndOut(){
     request->send(200, "text/plain", "OK");
   });
 }
-//added
+
+//initialize websocket
 void initWebSocket() {
   ws.onEvent(onEvent);
   server.addHandler(&ws);
 }
 
+//attach servos to their corresponding pins
 void attachServos(){
   servo10.attach(servo10Pin);
   servo11.attach(servo11Pin);
@@ -302,31 +321,40 @@ void attachServos(){
   servo21.attach(servo21Pin);
 }
 
+//set up code
 void setup() {
   // put your setup code here, to run once:
-  //led 
-  //pinMode(LED, OUTPUT);
-  //servo code
+  //servo code - attaches servos to pins
   attachServos();
   // Serial port for debugging purposes
   Serial.begin(115200);
-  tft.fillScreen(ST7735_BLACK);  //clear the screen first
+  //clear the screen first - set it to all black
+  tft.fillScreen(ST7735_BLACK);  
   tft.init();
   
-  initSPIFFS(); //same as initFS in Maritza's code
+  //initialize on board memory
+  initSPIFFS(); 
+  
+  //initialize wifi
   initWiFi();
   
+  //initialize websocket
   initWebSocket();
+  
+  //initialize main webpage
   initWebPage();
+  
+  //initialize log out page
   initLogInAndOut();
 
   // Start server
   server.serveStatic("/", SPIFFS, "/");
   server.begin();
-
-  
 }
 
+//previous values for servos so we can see when to move them
+//servos will be compared with the previous position to see if 
+//it has changed
 int previousValue10 = 0;
 int previousValue11 = 0;
 int previousValue12 = 0;
@@ -343,18 +371,13 @@ int previousValue21 = 0;
 void loop() {
   // put your main code here, to run repeatedly:
   //servo code
-  /*Serial.println(sliderValue10.substring(1)); //- prints out 78
-  Serial.println(sliderValue10);              //prints out s78
-  Serial.println('\n');
-  Serial.println(sliderValue11.substring(1)); //prints out 55
-  Serial.println(sliderValue11);              //prints out s55
-  Serial.println('\n');*/
-  //Serial.println(sliderValue12.substring(1).toInt());
-  //led right here idk why but need to move it somewhere else
-  //digitalWrite(LED, HIGH); 
+  //checks to see if the servo slider position has moved
   if(sliderValue10.substring(1).toInt() != previousValue10){
+    //delays the servo for DELAYTIME before moving 
     delay(DELAYTIME);
+    //reset the previous value to the new current value
     previousValue10 = sliderValue10.substring(1).toInt(); 
+    //move the servo to the new value
     servo10.write(sliderValue10.substring(1).toInt()); 
   }
   if(sliderValue11.substring(1).toInt() != previousValue11){
@@ -412,19 +435,11 @@ void loop() {
     previousValue21 = sliderValue21.substring(1).toInt(); 
     servo21.write(sliderValue21.substring(1).toInt()); 
   }
-  
-  
  
-
-  //display
-  //display to print out the ip address
-  //tft.fillScreen(ST7735_BLACK);
-    
-    
   ws.cleanupClients();
 
 
-  //reconnecting to wifi
+  //reconnects to wifi periodically to ensure that we don't stay dropped off of the wifi
   unsigned long currentMillis = millis();
   // if WiFi is down, try reconnecting
   if ((WiFi.status() != WL_CONNECTED) && (currentMillis - previousMillis >=interval)) {
@@ -435,5 +450,6 @@ void loop() {
     previousMillis = currentMillis;
   }
   
+  //delay for 10msec
   delay(10);
 }
