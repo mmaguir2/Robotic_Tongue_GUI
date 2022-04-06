@@ -2,11 +2,11 @@
 #include "WiFi.h"
 #include "ESPAsyncWebServer.h"
 #include "SPIFFS.h"
-#include <Arduino.h>
-#include <WiFi.h>
-#include <AsyncTCP.h>
-#include <Arduino_JSON.h>
-#include "SPIFFS.h"
+#include <Arduino.h>//[1]
+#include <WiFi.h>//[1]
+#include <AsyncTCP.h>//[1]
+#include <Arduino_JSON.h>//[1]
+#include "SPIFFS.h"//[1]
 #include <Servo.h>
 
 //import graphics library
@@ -60,11 +60,11 @@ static const int servo20Pin = 5;
 static const int servo21Pin = 33;
 
 //set network credentials - no password for NCSU 
-const char* ssid = "ncsu";
+const char* ssid = "ncsu"; //[1]
 
-// Create AsyncWebServer object on port 80
-AsyncWebServer server(80);
-AsyncWebSocket ws("/ws");
+// "Create AsyncWebServer object on port 80" [1]
+AsyncWebServer server(80);//[1]
+AsyncWebSocket ws("/ws");//[1]
 
 //JSON interaction
 String message = "";
@@ -81,11 +81,11 @@ String sliderValue19 = "0";
 String sliderValue20 = "0";
 String sliderValue21 = "0";
 
-//Json Variable to Hold Slider Values
-JSONVar sliderValues;
+//"Json Variable to Hold Slider Values"[1]
+JSONVar sliderValues;//[1]
 
-//Get Slider Values
-String getSliderValues(){
+//"Get Slider Values"[1]
+String getSliderValues(){//[1]
   sliderValues["sliderValue10"] = String(sliderValue10);
   sliderValues["sliderValue11"] = String(sliderValue11);
   sliderValues["sliderValue12"] = String(sliderValue12);
@@ -104,11 +104,12 @@ String getSliderValues(){
 }
 
 //notifies clients
-void notifyClients(String sliderValues) {
+void notifyClients(String sliderValues) {//[1]
   ws.textAll(sliderValues);
 }
 
 //get websocket changes for each slider 
+//similar format to handleWebSocketMessage() in [1]
 void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
   AwsFrameInfo *info = (AwsFrameInfo*)arg;
   if (info->final && info->index == 0 && info->len == len && info->opcode == WS_TEXT) {
@@ -193,6 +194,7 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
 }
 
 //connects the websocket to the internet
+//[1]
 void onEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventType type, void *arg, uint8_t *data, size_t len) {
   switch (type) {
     case WS_EVT_CONNECT:
@@ -216,15 +218,15 @@ const char* http_password = "admin";
 const char* PARAM_INPUT_1 = "state";
 const int output = 2;
 
-//initialize the SPIFFS (on board esp32 memory)
-void initSPIFFS(){
+//"initialize SPIFFS"[1] (on board esp32 memory)
+void initSPIFFS(){//[1]
   if(!SPIFFS.begin(true)){
     Serial.println("An Error has occurred while mounting SPIFFS");
     return;
   }
 }
 
-//initialize the WiFi
+//"initialize WiFi" [1]
 void initWiFi() {
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid);//,password);
@@ -257,7 +259,7 @@ void initWiFi() {
 //initialize the main webpage
 void initWebPage(){
   // Route for root / web page
-  server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
+  server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){//[1]
     if(!request->authenticate(http_username, http_password))
       return request->requestAuthentication();
     request->send(SPIFFS, "/index.html", "text/html");
@@ -303,7 +305,7 @@ void initLogInAndOut(){
   });
 }
 
-//initialize websocket
+//"initialize websocket."[1]
 void initWebSocket() {
   ws.onEvent(onEvent);
   server.addHandler(&ws);
@@ -337,13 +339,13 @@ void setup() {
   tft.init();
   
   //initialize on board memory
-  initSPIFFS(); 
+  initSPIFFS(); //[1]
   
   //initialize wifi
-  initWiFi();
+  initWiFi();//[1]
   
   //initialize websocket
-  initWebSocket();
+  initWebSocket();//[1]
   
   //initialize main webpage
   initWebPage();
@@ -352,8 +354,8 @@ void setup() {
   initLogInAndOut();
 
   // Start server
-  server.serveStatic("/", SPIFFS, "/");
-  server.begin();
+  server.serveStatic("/", SPIFFS, "/");//[1]
+  server.begin();//[1]
 }
 
 //previous values for servos so we can see when to move them
@@ -440,7 +442,7 @@ void loop() {
     servo21.write(sliderValue21.substring(1).toInt()); 
   }
  
-  ws.cleanupClients();
+  ws.cleanupClients();//[1]
 
 
   //reconnects to wifi periodically to ensure that we don't stay dropped off of the wifi
@@ -457,3 +459,13 @@ void loop() {
   //delay for 10msec
   delay(10);
 }
+/* 
+  Rui Santos
+  Complete project details at https://RandomNerdTutorials.com/esp32-web-server-websocket-sliders/
+  
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files.
+  
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+*/
