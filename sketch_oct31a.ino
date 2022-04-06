@@ -267,6 +267,10 @@ void initWebPage(){
   server.on("/style.css", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send(SPIFFS, "/style.css", "text/css");
   });
+  // Load education.html file with "/education" request
+  server.on("/education", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send(SPIFFS, "/education.html", "text/html");
+  });
 }
 
 //initialize the logout webpage
