@@ -202,10 +202,6 @@ function superiorInferior(element) {//Maritza
 //END:One slider moving two values ---------------------------------------------------------------------------------------------------
 
 //BEGIN:EDUACTION PAGE BUTTONS---------------------------------------------------------------------------------------------------
-/*Clicking the Education Button calls educationPage().
-educationPage() tells the esp32 to send the education request. 
-On the esp side, there is a function that sends the education.html page in SPIFFS
-when "education" is sent*/
 function educationPage() { //Maritza
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "/education", true);
@@ -213,10 +209,7 @@ function educationPage() { //Maritza
   setTimeout(function(){ window.open("/education","_self"); }, 1000);
 
 }
-/*Clicking the Back button on the Education page calls backToHomePg().
-backToHomePg() tells the esp32 to send the "/" request. 
-On the esp side, there is a function that sends the index.html page in SPIFFS
-when "/" is sent*/
+
 function backToHomePg() { //Maritza
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "/", true);
@@ -225,4 +218,3 @@ function backToHomePg() { //Maritza
 
 }
 //END:EDUCATION PAGE ---------------------------------------------------------------------------------------------------
-
