@@ -108,3 +108,26 @@
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
  
 }
+
+/*EDUCATION PAGE ------------------------------------------------------------------*/
+.exmuscleEdu, .intmuscleEdu {
+  text-align: left;
+  border-radius: 12px;
+  border: 2px solid black;
+  padding-left:3%;
+  padding-top:0%;
+  padding-bottom:0%;
+  color: black;
+  margin: 5px;
+}
+
+/*EXTRINSIC DEFINITIONS SECTION COLOR*/
+.exmuscleEdu {
+  background-color: #FBD1B7;
+ 
+}
+/* INTRINSIC DEFINITIONS SECTION COLOR*/
+.intmuscleEdu {
+  background-color: #D4E2D4;
+  
+}
