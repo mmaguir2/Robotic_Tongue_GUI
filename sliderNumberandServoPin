@@ -5,15 +5,12 @@ Hyoglossus Left	        |12|27
 Hyoglossus Right        |13|12
 Styloglossus Left       |14|19
 Styloglossus Right      |15|14
-Palatoglossus Left      |16|26
-Palatoglossus Right     |17|25
-Transversus             |18|2
-Verticalis              |19|32
-Superior Longitudinal   |20|5
-Inferior Longitudinal   |21|33
+Transversus             |16|26
+Verticalis              |17|25
+Superior Longitudinal   |18|2
+Inferior Longitudinal   |19|32
 
-Genioglossus Ant&Post   |22|n/a
-Hyoglossus L&R          |23|n/a
-Styloglossus L&R        |24|n/a
-Palatoglossus L&R       |25|n/a
-Superior & Inferior     |26|n/a
+Genioglossus Ant&Post   |20|n/a
+Hyoglossus L&R          |21|n/a
+Styloglossus L&R        |22|n/a
+Superior & Inferior     |23|n/a
