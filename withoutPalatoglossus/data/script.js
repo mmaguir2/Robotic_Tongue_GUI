@@ -117,6 +117,39 @@ function bOne(){ //Maritza
 	//superior longitudinal
 	updateSliderPWM(document.getElementById("slider18"));
 }
+function bTwo(){ //Maritza
+	//changes Verticalis slider Value: to 180
+	document.getElementById("sliderValue14").innerHTML = "180";
+	document.getElementById("slider14").value = "180";
+	updateSliderPWM(document.getElementById("slider14"));
+	
+	document.getElementById("sliderValue14").innerHTML = "0";
+	document.getElementById("slider14").value = "0";
+	pdateSliderPWM(document.getElementById("slider14"));
+	
+	document.getElementById("sliderValue15").innerHTML = "180";
+	document.getElementById("slider15").value = "180";
+	updateSliderPWM(document.getElementById("slider15"));
+	
+	document.getElementById("sliderValue15").innerHTML = "0";
+	document.getElementById("slider15").value = "0";
+	updateSliderPWM(document.getElementById("slider15"));
+	document.getElementById("sliderValue14").innerHTML = "180";
+	document.getElementById("slider14").value = "180";
+	updateSliderPWM(document.getElementById("slider14"));
+	
+	document.getElementById("sliderValue14").innerHTML = "0";
+	document.getElementById("slider14").value = "0";
+	pdateSliderPWM(document.getElementById("slider14"));
+	
+	document.getElementById("sliderValue15").innerHTML = "180";
+	document.getElementById("slider15").value = "180";
+	updateSliderPWM(document.getElementById("slider15"));
+	
+	document.getElementById("sliderValue15").innerHTML = "0";
+	document.getElementById("slider15").value = "0";
+	updateSliderPWM(document.getElementById("slider15"));
+}
 //BEGIN: One slider moving two values ---------------------------------------------------------------------------------------------------
 //The functions below are connected with the sliders that move two other sliders simultaneously.
 function genioAP(element) { //Maritza
