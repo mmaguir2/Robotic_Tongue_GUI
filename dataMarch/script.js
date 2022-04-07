@@ -53,7 +53,7 @@ to the server so that the ESP32 updates the LED brightness"[1].*/
     var sliderValue = document.getElementById(element.id).value;
     document.getElementById("sliderValue"+sliderNumber).innerHTML = sliderValue;
     console.log(sliderValue);
-    websocket.send(sliderNumber+"s"+sliderValue.toString());
+    websocket.send(sliderNumber+" "+sliderValue.toString());
 }
 
 
