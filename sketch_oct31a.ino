@@ -120,73 +120,73 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
   if (info->final && info->index == 0 && info->len == len && info->opcode == WS_TEXT) {
     data[len] = 0;
     message = (char*)data;
-    if (message.indexOf("10s") >= 0) {
+    if (message.indexOf("10 ") >= 0) {
       sliderValue10 = message.substring(2);
       
       Serial.print(getSliderValues());
       notifyClients(getSliderValues());
     }
-    if (message.indexOf("11s") >= 0) {
+    if (message.indexOf("11 ") >= 0) {
       sliderValue11 = message.substring(2);
       
       Serial.print(getSliderValues());
       notifyClients(getSliderValues());
     }    
-    if (message.indexOf("12s") >= 0) {
+    if (message.indexOf("12 ") >= 0) {
       sliderValue12 = message.substring(2);
       
       Serial.print(getSliderValues());
       notifyClients(getSliderValues());
     }
-    if (message.indexOf("13s") >= 0) {
+    if (message.indexOf("13 ") >= 0) {
       sliderValue13 = message.substring(2);
       
       Serial.print(getSliderValues());
       notifyClients(getSliderValues());
     }
-    if (message.indexOf("14s") >= 0) {
+    if (message.indexOf("14 ") >= 0) {
       sliderValue14 = message.substring(2);
       
       Serial.print(getSliderValues());
       notifyClients(getSliderValues());
     }
-    if (message.indexOf("15s") >= 0) {
+    if (message.indexOf("15 ") >= 0) {
       sliderValue15 = message.substring(2);
       
       Serial.print(getSliderValues());
       notifyClients(getSliderValues());
     }
-    if (message.indexOf("16s") >= 0) {
+    if (message.indexOf("16 ") >= 0) {
       sliderValue16 = message.substring(2);
       
       Serial.print(getSliderValues());
       notifyClients(getSliderValues());
     }
-     if (message.indexOf("17s") >= 0) {
+     if (message.indexOf("17 ") >= 0) {
       sliderValue17 = message.substring(2);
       
       Serial.print(getSliderValues());
       notifyClients(getSliderValues());
     }
-     if (message.indexOf("18s") >= 0) {
+     if (message.indexOf("18 ") >= 0) {
       sliderValue18 = message.substring(2);
       
       Serial.print(getSliderValues());
       notifyClients(getSliderValues());
     }
-    if (message.indexOf("19s") >= 0) {
+    if (message.indexOf("19 ") >= 0) {
       sliderValue19 = message.substring(2);
       
       Serial.print(getSliderValues());
       notifyClients(getSliderValues());
     }
-    if (message.indexOf("20s") >= 0) {
+    if (message.indexOf("20 ") >= 0) {
       sliderValue20 = message.substring(2);
       
       Serial.print(getSliderValues());
       notifyClients(getSliderValues());
     }
-    if (message.indexOf("21s") >= 0) {
+    if (message.indexOf("21 ") >= 0) {
       sliderValue21 = message.substring(2);
       
       Serial.print(getSliderValues());
