@@ -1,4 +1,4 @@
-muscle|slider #|gpio pin
+muscle            |slider #|gpio pin
 Genioglossus Anterior	  |10|21
 Genioglossus Posterior  |11|13
 Hyoglossus Left	        |12|27
