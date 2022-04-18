@@ -29,13 +29,23 @@ Hyoglossus L&R|21|n/a
 Styloglossus L&R|22|n/a
 Superior & Inferior|23|n/a
 -->
-<!-- EXTRINSIC MUSCLE SECTION -->
-	<h2 style="margin-bottom:0; margin-top:0;">Extrinsic Muscles </h2>
+<!-- EXTRINSIC MUSCLE SECTION -->	
+	<h2 style="margin-bottom:0; margin-top:0;"><div class="tooltip">Extrinsic Muscles<span class = "tooltiptext">Extrinsic muscles move the tongue around like a puppet</span> </div></h2>
+	<br>
+	<!-- EXTRINSIC IMAGE -->
+	<img src = "extrinsic.png" alt="Extrinsic Tongue Photo"
+		class= "center" style="width:300px;height:300px;">
+	<br>
+	
 	<div class = "grid-blocks">
 		
 		<!-- GENIOGLOSSUS -->
 		<div class="grid-Exmuscle">
-		<h3 style="margin-bottom:0; margin-top:0;">Genioglossus</h3>
+		<h3 style="margin-bottom:0; margin-top:0;"><div class="tooltip">
+			Genioglossus<span class = "tooltiptext"> posterior fibers advance the tongue, 
+			middle fibers depress the back of the tongue, and anterior fibers draw the front of the 
+			tongue down and back</span> </div></h3>
+			
 		<h4 >Anterior</h4>
 		<div class="slidecontainer">
 		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider10">
@@ -55,7 +65,8 @@ Superior & Inferior|23|n/a
 		
 		<!-- HYOGLOSSUS -->
 		<div class="grid-Exmuscle">
-		<h3 style="margin-bottom:0; margin-top:0;">Hyoglossus</h3>
+		<h3 style="margin-bottom:0; margin-top:0;"><div class="tooltip">
+			Hyoglossus<span class = "tooltiptext">retracts and depresses the tongue </span> </div></h3>
 		<h4>Left</h4>
 		<div class="slidecontainer">
 		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider12">
@@ -75,7 +86,8 @@ Superior & Inferior|23|n/a
 		
 		<!-- STYLOGLOSSUS -->
 		<div class="grid-Exmuscle">
-		<h3 style="margin-bottom:0; margin-top:0;">Styloglossus</h3>
+		<h3 style="margin-bottom:0; margin-top:0;"><div class="tooltip">
+			Styloglossus<span class = "tooltiptext"> potentially elevates and retracts the tongue </span> </div></h3>
 		<h4>Left</h4>
 		<div class="slidecontainer">
 		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider14">
@@ -94,14 +106,23 @@ Superior & Inferior|23|n/a
 		</div>
 		
 	</div>
-
-<!-- INTRINSIC MUSCLE SECTION -->
-<h2 style="margin-bottom:0;">Intrinsic Muscles </h2>
-		<div class = "grid-blocks">
 			
+<!-- INTRINSIC MUSCLE SECTION -->
+<h2 style="margin-bottom:0;"><div class="tooltip">
+			Intrinsic Muscles<span class = "tooltiptext">Intrinsic muscles change the shape of the tongue from the inside</span> </div> </h2>
+			<br>
+			
+		<!-- INITRINSIC IMAGE -->
+		<img src = "intrinsic.png" alt="Extrinsic Tongue Photo"
+		class= "center" style="width:500px;height:300px;">
+		<br>
+		
+		<div class = "grid-blocks">
 		<!-- TRANSVERSUS-->
 		<div class="grid-Intmuscle">
-		<h3 style="margin-top:0;">Transversus</h3>
+		<h3 style="margin-top:0;"><div class="tooltip">
+			Transversus<span class = "tooltiptext"> narrows the tongue body, which may result in elongation 
+			and protrusion</span> </div></h3>
 		<div class="slidecontainer">
 		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider16">
 		<p>Value: <span id="sliderValue16"></span></p>
@@ -110,7 +131,9 @@ Superior & Inferior|23|n/a
 		
 		<!-- VERTICALIS -->
 		<div class="grid-Intmuscle">
-		<h3 style="margin-top:0;">Verticalis</h3>
+		<h3 style="margin-top:0;"><div class="tooltip">
+			Verticalis<span class = "tooltiptext">flattens and broadens the tongue body, which may result in
+			elongation and protrusion</span> </div></h3>
 		<div class="slidecontainer">
 		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider17">
 		<p>Value: <span id="sliderValue17"></span></p>
@@ -119,7 +142,9 @@ Superior & Inferior|23|n/a
 		
 		<!-- SUPERIOR LONGITUDINAL -->
 		<div class="grid-Intmuscle">
-		<h3 style=" margin-top:0;">Superior Longitudinal</h3>
+		<h3 style=" margin-top:0;"><div class="tooltip">
+			Superior Longitudinal<span class = "tooltiptext">curls the apex and lateral sides of the 
+			tongue upwards; when contracted with inferior longitudinal, they retract the tongue tip</span> </div></h3>
 		<div class="slidecontainer">
 		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider18">
 		<p>Value: <span id="sliderValue18"></span></p>
@@ -128,7 +153,9 @@ Superior & Inferior|23|n/a
 		
 		<!-- INFERIOR LONGITUDINAL -->
 		<div class="grid-Intmuscle">
-		<h3 style=" margin-top:0;">Inferior Longitudinal</h3>
+		<h3 style=" margin-top:0;"><div class="tooltip">
+			Inferior Longitudinal<span class = "tooltiptext">curl the apex and lateral sides of the 
+			tongue downwards; when acting with the superior longitudinal, they retract the tongue tip</span></h3>
 		<div class="slidecontainer">
 		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider19">
 		<p>Value: <span id="sliderValue19"></span></p>
