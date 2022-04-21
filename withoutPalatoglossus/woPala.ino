@@ -37,28 +37,28 @@ unsigned long previousMillis = 0;
 unsigned long interval = 30000;
 
 //create servo objects
-Servo servo10;
-Servo servo11;
-Servo servo12;
-Servo servo13;
-Servo servo14;
-Servo servo15;
-Servo servo16;
-Servo servo17;
-Servo servo18;
-Servo servo19;
+Servo servo10;//pin 21
+Servo servo11;//pin 13
+Servo servo12;// pin 27
+Servo servo13;//pin 12
+Servo servo14;// pin 19
+Servo servo15;//pin 14
+Servo servo16;//pin 26
+Servo servo17;//pin 25
+Servo servo18;//pin 2
+Servo servo19;//pin 32
 
 //set servo pins 
-static const int servo10Pin = 21;
-static const int servo11Pin = 13;
-static const int servo12Pin = 27;
-static const int servo13Pin = 12;
-static const int servo14Pin = 19;
-static const int servo15Pin = 14;
-static const int servo16Pin = 26;
-static const int servo17Pin = 25;
-static const int servo18Pin = 2;
-static const int servo19Pin = 32;
+static const int servo10Pin = 21;//Genioglossus Anterior
+static const int servo11Pin = 13;//Genioglossus Posterior
+static const int servo12Pin = 27;//Hyoglossus Left
+static const int servo13Pin = 12;//Hyoglossus Right
+static const int servo14Pin = 19;//Styloglossus Left
+static const int servo15Pin = 14;//Styloglossus Right
+static const int servo16Pin = 26;//Transversus
+static const int servo17Pin = 25;//Verticalis
+static const int servo18Pin = 2;//Superior Longitudinal
+static const int servo19Pin = 32;//Inferior Longitudinal
 
 //set network credentials - no password for NCSU 
 const char* ssid = "ncsu"; //[1]
@@ -69,16 +69,16 @@ AsyncWebSocket ws("/ws");//[1]
 
 //JSON interaction
 String message = "";
-String sliderValue10 = "0";
-String sliderValue11 = "0";
-String sliderValue12 = "0";
-String sliderValue13 = "0";
-String sliderValue14 = "0";
-String sliderValue15 = "0";
-String sliderValue16 = "0";
-String sliderValue17 = "0";
-String sliderValue18 = "0";
-String sliderValue19 = "0";
+String sliderValue10 = "0";//Genioglossus Anterior
+String sliderValue11 = "0";//Genioglossus Posterior
+String sliderValue12 = "0";//Hyoglossus Left
+String sliderValue13 = "0";//Hyoglossus Right
+String sliderValue14 = "0";//Styloglossus Left
+String sliderValue15 = "0";//Styloglossus Right
+String sliderValue16 = "0";//Transversus
+String sliderValue17 = "0";//Verticalis
+String sliderValue18 = "0";//Superior Longitudinal
+String sliderValue19 = "0";//Inferior Longitudinal
 
 //"Json Variable to Hold Slider Values"[1]
 JSONVar sliderValues;//[1]
