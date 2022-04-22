@@ -49,16 +49,16 @@ Servo servo18;//pin 2
 Servo servo19;//pin 32
 
 //set servo pins 
-static const int servo10Pin = 21;//Genioglossus Anterior
-static const int servo11Pin = 13;//Genioglossus Posterior
-static const int servo12Pin = 27;//Hyoglossus Left
-static const int servo13Pin = 12;//Hyoglossus Right
-static const int servo14Pin = 19;//Styloglossus Left
-static const int servo15Pin = 14;//Styloglossus Right
-static const int servo16Pin = 26;//Transversus
-static const int servo17Pin = 25;//Verticalis
-static const int servo18Pin = 2;//Superior Longitudinal
-static const int servo19Pin = 32;//Inferior Longitudinal
+static const int servo10Pin = 12;//Genioglossus Anterior
+static const int servo11Pin = 32;//Genioglossus Posterior
+static const int servo12Pin = 13;//Hyoglossus Left
+static const int servo13Pin = 2;//Hyoglossus Right
+static const int servo14Pin = 27;//Styloglossus Left
+static const int servo15Pin = 26;//Styloglossus Right
+static const int servo16Pin = 14;//Transversus
+static const int servo17Pin = 5;//Verticalis
+static const int servo18Pin = 25;//Superior Longitudinal
+static const int servo19Pin = 21;//Inferior Longitudinal
 
 //set network credentials - no password for NCSU 
 const char* ssid = "ncsu"; //[1]
