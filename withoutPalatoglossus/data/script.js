@@ -9,6 +9,8 @@ var gateway = `ws://${window.location.hostname}/ws`; /*"The gateway is the entry
 point to the WebSocket interface.window.location.hostname gets the current page
 address (the web server IP address)"[1].*/
 var websocket;//"global variable"[1]
+var delayInMilliseconds = 1000;
+const myTimeout = setTimeout("hello", 5000);
 window.addEventListener('load', onload); /*"Add an event listener that will call 
 the onload function when the web page loads"[1].*/
 
@@ -87,7 +89,7 @@ function logoutButton() { //Nathan
 /*When the rest button is clicked, the resetButton() function goes through all slider 
 numbers and changes the position and value to 0*/
 function resetButton(){ //Maritza
-	for(var i=10; i<24;i++){
+	for(var i=10; i<23;i++){
 	//changes slider Value: to 0
 	document.getElementById("sliderValue"+i.toString()).innerHTML = "0";
 	//changes slider to postion 0
@@ -102,54 +104,183 @@ function resetButton(){ //Maritza
 /*When the first saved configuration button is clicked, the bOne() function is called
 and changes specific sliders to certain values and calls updateSliderPWM() to change
 the corresponding servo*/
-function bOne(){ //Maritza
-	//changes Verticalis slider Value: to 180
-	document.getElementById("sliderValue17").innerHTML = "180";
-	//changes Verticalis slider to postion 180
-	document.getElementById("slider17").value = "180";
-	//changes Superior Longitudinal slider Value: to 180
-	document.getElementById("sliderValue18").innerHTML = "180";
-	//changes Superior Longitudinal slider to position 180
-	document.getElementById("slider18").value = "180";
+function depress(){ //Maritza
+	//changes Genio A slider Value: to 180
+	document.getElementById("sliderValue10").innerHTML = "180";
+	//changes Genio A slider to postion 180
+	document.getElementById("slider10").value = "180";
+	//changes Genio P slider Value: to 180
+	document.getElementById("sliderValue11").innerHTML = "180";
+	//changes Genio P slider to postion 180
+	document.getElementById("slider11").value = "180";
+	//changes hyoglossus L slider Value: to 180
+	document.getElementById("sliderValue12").innerHTML = "180";
+	//changes hyoglossus L slider to position 180
+	document.getElementById("slider12").value = "180";
+	//changes hyoglossus R slider Value: to 180
+	document.getElementById("sliderValue13").innerHTML = "180";
+	//changes hyoglossus R slider to position 180
+	document.getElementById("slider13").value = "180";
+	
 	//change servo position
-	//verticalis
-	updateSliderPWM(document.getElementById("slider17"));
-	//superior longitudinal
+	//Genio A
+	updateSliderPWM(document.getElementById("slider10"));
+	//Genio P
+	updateSliderPWM(document.getElementById("slider11"));
+	//Hyoglossus L
+	updateSliderPWM(document.getElementById("slider12"));
+	//Hyoglossus R
+	updateSliderPWM(document.getElementById("slider13"));
+}
+//Retract
+function retract(){ //Maritza 
+	//changes superior long slider Value: to 180
+	document.getElementById("sliderValue18").innerHTML = "120";
+	document.getElementById("slider18").value = "120";
+	//changes inferior long slider Value: to 180
+	document.getElementById("sliderValue19").innerHTML = "120";
+	document.getElementById("slider19").value = "120";
+	
 	updateSliderPWM(document.getElementById("slider18"));
+	updateSliderPWM(document.getElementById("slider19"));
 }
-function bTwo(){ //Maritza
-	//changes Verticalis slider Value: to 180
-	document.getElementById("sliderValue14").innerHTML = "180";
-	document.getElementById("slider14").value = "180";
+
+function leftMovement(){
+	//changes superior long slider Value: to 180
+	document.getElementById("sliderValue18").innerHTML = "120";
+	document.getElementById("slider18").value = "120";
+	
+	updateSliderPWM(document.getElementById("slider18"));
+	
+	setTimeout(center,1000);
+}
+function center(){
+	//changes superior long slider Value: to 180
+	document.getElementById("sliderValue18").innerHTML = "0";
+	document.getElementById("slider18").value = "0";
+	
+	updateSliderPWM(document.getElementById("slider18"));
+	setTimeout(rightMovement(), 1000);
+}
+function rightMovement(){
+	document.getElementById("sliderValue19").innerHTML = "120";
+	document.getElementById("slider19").value = "120";
+	
+	updateSliderPWM(document.getElementById("slider19"));
+	setTimeout(center2,1000);
+}
+function center2(){
+	//changes superior long slider Value: to 180
+	document.getElementById("sliderValue19").innerHTML = "0";
+	document.getElementById("slider19").value = "0";
+	
+	updateSliderPWM(document.getElementById("slider19"));
+	//setTimeout(leftMovement,1000);
+}
+function upDown(){
+	leftMovement();
+}
+
+function circleDown(){ 
+	//inferior longitudinal on
+	//hyoglossus right off
+	
+	//changes superior long slider Value: to 180
+	document.getElementById("sliderValue13").innerHTML = "0";
+	document.getElementById("slider13").value = "0";
+	document.getElementById("sliderValue19").innerHTML = "120";
+	document.getElementById("slider19").value = "120";
+	
+	updateSliderPWM(document.getElementById("slider19"));
+	updateSliderPWM(document.getElementById("slider13"));
+	setTimeout(circleDownLeft, 500);
+}
+function circleDownLeft(){ 
+	//inferior longitudinal on
+	//hyoglossus left on
+	//changes superior long slider Value: to 180
+	document.getElementById("sliderValue12").innerHTML = "120";
+	document.getElementById("slider12").value = "120";
+	
+	updateSliderPWM(document.getElementById("slider12"));
+	setTimeout(circleLeft, 500);
+}
+function circleLeft(){
+	//styloglossus left on
+	//inferior longitudinal off
+	//hyoglossus left off
+	
+	//changes superior long slider Value: to 180
+	document.getElementById("sliderValue14").innerHTML = "120";
+	document.getElementById("slider14").value = "120";
+	document.getElementById("sliderValue12").innerHTML = "0";
+	document.getElementById("slider12").value = "0";
+	document.getElementById("sliderValue19").innerHTML = "0";
+	document.getElementById("slider19").value = "0";
+	
+	updateSliderPWM(document.getElementById("slider19"));
+	updateSliderPWM(document.getElementById("slider12"));
 	updateSliderPWM(document.getElementById("slider14"));
+	setTimeout(circleUpLeft, 500);
+}
+function circleUpLeft(){
+	//superior longitudinal on
+	
+	document.getElementById("sliderValue18").innerHTML = "120";
+	document.getElementById("slider18").value = "120";
+	
+	updateSliderPWM(document.getElementById("slider18"));
+	setTimeout(circleUp, 500);
+}
+function circleUp(){
+	//styloglossus left off
 	
 	document.getElementById("sliderValue14").innerHTML = "0";
 	document.getElementById("slider14").value = "0";
-	pdateSliderPWM(document.getElementById("slider14"));
 	
-	document.getElementById("sliderValue15").innerHTML = "180";
-	document.getElementById("slider15").value = "180";
-	updateSliderPWM(document.getElementById("slider15"));
-	
-	document.getElementById("sliderValue15").innerHTML = "0";
-	document.getElementById("slider15").value = "0";
-	updateSliderPWM(document.getElementById("slider15"));
-	document.getElementById("sliderValue14").innerHTML = "180";
-	document.getElementById("slider14").value = "180";
 	updateSliderPWM(document.getElementById("slider14"));
+	setTimeout(circleUpRight, 500);
+}
+function circleUpRight(){
+	//styloglossus right on 
 	
-	document.getElementById("sliderValue14").innerHTML = "0";
-	document.getElementById("slider14").value = "0";
-	pdateSliderPWM(document.getElementById("slider14"));
+	document.getElementById("sliderValue15").innerHTML = "120";
+	document.getElementById("slider15").value = "120";
 	
-	document.getElementById("sliderValue15").innerHTML = "180";
-	document.getElementById("slider15").value = "180";
 	updateSliderPWM(document.getElementById("slider15"));
+	setTimeout(circleRight, 500);
+}
+function circleRight(){
+	//superior longitudinal off
+	
+	document.getElementById("sliderValue18").innerHTML = "0";
+	document.getElementById("slider18").value = "0";
+	
+	updateSliderPWM(document.getElementById("slider18"));
+	setTimeout(circleDownRight, 500);
+}
+function circleDownRight(){
+	//hyoglossus right on 
+	//inferior longitudinal on 
+	//styloglossus right off
 	
 	document.getElementById("sliderValue15").innerHTML = "0";
 	document.getElementById("slider15").value = "0";
+	document.getElementById("sliderValue13").innerHTML = "120";
+	document.getElementById("slider13").value = "120";
+	document.getElementById("sliderValue19").innerHTML = "120";
+	document.getElementById("slider19").value = "120";
+	
+	updateSliderPWM(document.getElementById("slider19"));
+	updateSliderPWM(document.getElementById("slider13"));
 	updateSliderPWM(document.getElementById("slider15"));
+	setTimeout(circleDown, 500);
 }
+function licker(){
+	circleDown();
+}
+
+
 //BEGIN: One slider moving two values ---------------------------------------------------------------------------------------------------
 //The functions below are connected with the sliders that move two other sliders simultaneously.
 function genioAP(element) { //Maritza
@@ -202,23 +333,6 @@ function styloglossusLR(element) {//Maritza
 	}
 }
 
-
-function superiorInferior(element) {//Maritza
-    var sliderNumber = element.id.charAt(element.id.length-2)+element.id.charAt(element.id.length-1);
-    var sliderValue = document.getElementById(element.id).value;
-	//change slider Value: 
-    document.getElementById("sliderValue"+sliderNumber).innerHTML = sliderValue;
-	//change left and right slider Value:
-	document.getElementById("sliderValue18").innerHTML = sliderValue;
-	document.getElementById("sliderValue19").innerHTML = sliderValue;
-	//move  left and right slider position
-	document.getElementById("slider18").value = sliderValue;
-	document.getElementById("slider19").value = sliderValue;
-	//change servo value
-    for(var i = 18; i<20; i++){
-		updateSliderPWM(document.getElementById("slider"+i.toString()));
-	}
-}
 //END:One slider moving two values ---------------------------------------------------------------------------------------------------
 
 //BEGIN:EDUACTION PAGE BUTTONS---------------------------------------------------------------------------------------------------
@@ -237,6 +351,7 @@ function backToHomePg() { //Maritza
   setTimeout(function(){ window.open("/","_self"); }, 1000);
 
 }
+
 //END:EDUCATION PAGE ---------------------------------------------------------------------------------------------------
 
 /* 
