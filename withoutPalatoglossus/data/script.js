@@ -10,6 +10,8 @@ point to the WebSocket interface.window.location.hostname gets the current page
 address (the web server IP address)"[1].*/
 var websocket;//"global variable"[1]
 var delayInMilliseconds = 1000;
+var global1 = 0;
+var global2 = 0;
 const myTimeout = setTimeout("hello", 5000);
 window.addEventListener('load', onload); /*"Add an event listener that will call 
 the onload function when the web page loads"[1].*/
@@ -145,6 +147,7 @@ function retract(){ //Maritza
 	updateSliderPWM(document.getElementById("slider19"));
 }
 
+
 function leftMovement(){
 	//changes superior long slider Value: to 180
 	document.getElementById("sliderValue18").innerHTML = "120";
@@ -175,7 +178,8 @@ function center2(){
 	document.getElementById("slider19").value = "0";
 	
 	updateSliderPWM(document.getElementById("slider19"));
-	//setTimeout(leftMovement,1000);
+	if(global1 < 3) { global1++; setTimeout(leftMovement,1000); }
+	else { }
 }
 function upDown(){
 	leftMovement();
@@ -274,8 +278,15 @@ function circleDownRight(){
 	updateSliderPWM(document.getElementById("slider19"));
 	updateSliderPWM(document.getElementById("slider13"));
 	updateSliderPWM(document.getElementById("slider15"));
-	setTimeout(circleDown, 500);
+	if(global2 < 2){ global2++; setTimeout(circleDown, 500); }
+	else { 
+		document.getElementById("sliderValue19").innerHTML = "120";
+		document.getElementById("slider19").value = "120";
+		
+		updateSliderPWM(document.getElementById("slider19"));
+	} 
 }
+
 function licker(){
 	circleDown();
 }
