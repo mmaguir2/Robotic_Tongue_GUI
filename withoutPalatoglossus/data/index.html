@@ -12,16 +12,16 @@
 	corresponds with each muscle.
 	
 muscle            |slider #|gpio pin
-Genioglossus Anterior	|10|21
-Genioglossus Posterior  |11|13
-Hyoglossus Left	        |12|27
-Hyoglossus Right        |13|12
-Styloglossus Left       |14|19
-Styloglossus Right      |15|14
-Transversus             |16|26
-Verticalis              |17|25
-Superior Longitudinal   |18|2
-Inferior Longitudinal   |19|32
+Genioglossus Anterior	|10|12
+Genioglossus Posterior  |11|32
+Hyoglossus Left	        |12|13
+Hyoglossus Right        |13|2
+Styloglossus Left       |14|27
+Styloglossus Right      |15|26
+Transversus             |16|14
+Verticalis              |17|5
+Superior Longitudinal   |18|25
+Inferior Longitudinal   |19|21
 
 Genioglossus Ant&Post   |20|n/a
 Hyoglossus L&R          |21|n/a
@@ -70,17 +70,17 @@ Superior & Inferior     |23|n/a
 			Hyoglossus<span class = "tooltiptext">retracts and depresses the tongue </span> </div></h3>
 		<h4>Left</h4>
 		<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider12">
+		<input type="range" onchange="updateSliderPWM(this)" min="0" max="120" value="0" class="slider" id="slider12">
 		<p>   Value: <span id="sliderValue12"></span></p>
 		</div>
 		<h4>Right</h4>
 		<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider13">
+		<input type="range" onchange="updateSliderPWM(this)" min="0" max="120" value="0" class="slider" id="slider13">
 		<p>   Value: <span id="sliderValue13"></span></p>
 		</div>
 		<h4>Left & Right</h4>
 		<div class="slidecontainer">
-		<input type="range" onchange="hyoglossusLR(this)" min="0" max="180" value="0" class="slider" id="slider21">
+		<input type="range" onchange="hyoglossusLR(this)" min="0" max="120" value="0" class="slider" id="slider21">
 		<p>   Value: <span id="sliderValue21"></span></p>
 		</div>
 		</div>
@@ -147,7 +147,7 @@ Superior & Inferior     |23|n/a
 			Superior Longitudinal<span class = "tooltiptext">curls the apex and lateral sides of the 
 			tongue upwards; when contracted with inferior longitudinal, they retract the tongue tip</span> </div></h3>
 		<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider18">
+		<input type="range" onchange="updateSliderPWM(this)" min="0" max="120" value="0" class="slider" id="slider18">
 		<p>Value: <span id="sliderValue18"></span></p>
 		</div>
 		</div>
@@ -158,19 +158,20 @@ Superior & Inferior     |23|n/a
 			Inferior Longitudinal<span class = "tooltiptext">curl the apex and lateral sides of the 
 			tongue downwards; when acting with the superior longitudinal, they retract the tongue tip</span></h3>
 		<div class="slidecontainer">
-		<input type="range" onchange="updateSliderPWM(this)" min="0" max="180" value="0" class="slider" id="slider19">
+		<input type="range" onchange="updateSliderPWM(this)" min="0" max="120" value="0" class="slider" id="slider19">
 		<p>Value: <span id="sliderValue19"></span></p>
 		</div>
 		</div>
 		
-		<!--SUPERIOR & INFERIOR LONGITUDINAL SLIDER -->
+		<!--SUPERIOR & INFERIOR LONGITUDINAL SLIDER 
 		<div class="grid-Intmuscle">
 		<h3 style=" margin-top:0;">Superior & Inferior </h3>
 		<div class="slidecontainer">
-		<input type="range" onchange="superiorInferior(this)" min="0" max="180" value="0" class="slider" id="slider23">
+		<input type="range" onchange="superiorInferior(this)" min="0" max="90" value="0" class="slider" id="slider23">
 		<p>Value: <span id="sliderValue23"></span></p>
 		</div>
 		</div>
+		-->
 		</div>
 	
 <!-- SAVED CONFIGURATIONS SECTION -->
@@ -178,9 +179,10 @@ Superior & Inferior     |23|n/a
 <div class = "SavedConfig">
 		<h3>Click any button to apply movement!</h3>
 		<!-- LIST OF BUTTONS -->
-		<button class="UniqueButton" onclick = "bOne()">L movement</button>
-		<button class="UniqueButton" onclick = "bTwo()">Side to Side</button>
-		<button class="UniqueButton">3</button>
+		<button class="UniqueButton" onclick = "depress()">Depress</button>
+		<button class="UniqueButton" onclick = "retract()">Retract</button>
+		<button class="UniqueButton" onclick = "upDown()">Up and Down</button>
+		<button class="UniqueButton" onclick = "licker()">LICK BITCH</button>
 		
 </div>
 	<p>*REMEMBER RESET BEFORE LOGGING OUT*</p>
