@@ -17,11 +17,15 @@ Senior Design Key Requirements: <br>
 How to use files: <br>
 The data folder consists of an HTML, CSS, and JavaScript files. These are the main files for the layout and function of the user interface. The data files need to be uploaded to the esp 32 SPIFFS <br>
 
-How to set up Arduino IDE to run files on esp32:<br>
+How to set up Arduino IDE to run RoboticTongue directory on esp32:<br>
 -Install the Arduino IDE here https://www.arduino.cc/en/software<br>
 -Install the ESP32 board in Arduino IDE as shown here: https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/e/<br>
 -Install SPIFFS Uploader as shown here: https://randomnerdtutorials.com/install-esp32-filesystem-uploader-arduino-ide/<br>
 -After completing the above, add Adafruit_GFX_Library, Arduino_JSON, AsyncTCP-master, ESPAsyncWebServer-master, XTronical-ST7735-Library directories to libraries folder of Arduino IDE<br>
+
+-Save RoboticTongue Directory where your Arduino sketches are saved to. 
+-Open RoboticTongue.ino in Arduino IDE
+-
 
 References <br>
 [1] R. Santos and S. Santos. "ESP32 Web Server (WebSocket) with Multiple <br>
