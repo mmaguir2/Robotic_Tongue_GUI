@@ -147,7 +147,7 @@ function retract(){ //Maritza
 	updateSliderPWM(document.getElementById("slider19"));
 }
 
-
+//BEGIN: functions for Lick button ----------------------------------Nathan
 function leftMovement(){
 	//changes superior long slider Value: to 180
 	document.getElementById("sliderValue18").innerHTML = "120";
@@ -184,7 +184,9 @@ function center2(){
 function upDown(){
 	leftMovement();
 }
+//END: functions for Lick button ----------------------------------
 
+//BEGIN: functions for DANCE button ----------------------------------Nathan
 function circleDown(){ 
 	//inferior longitudinal on
 	//hyoglossus right off
@@ -285,11 +287,11 @@ function circleDownRight(){
 		
 		updateSliderPWM(document.getElementById("slider19"));
 	} 
-}
 
-function licker(){
+function dance(){
 	circleDown();
 }
+//END: functions for DANCE button ----------------------------------
 
 
 //BEGIN: One slider moving two values ---------------------------------------------------------------------------------------------------
