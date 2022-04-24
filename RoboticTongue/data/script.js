@@ -149,7 +149,7 @@ function retract(){ //Maritza
 
 //BEGIN: functions for Lick button ----------------------------------Nathan
 function leftMovement(){
-	//changes superior long slider Value: to 180
+	//changes superior long slider Value: to 120
 	document.getElementById("sliderValue18").innerHTML = "120";
 	document.getElementById("slider18").value = "120";
 	
@@ -158,7 +158,7 @@ function leftMovement(){
 	setTimeout(center,1000);
 }
 function center(){
-	//changes superior long slider Value: to 180
+	//changes superior long slider Value: to 0
 	document.getElementById("sliderValue18").innerHTML = "0";
 	document.getElementById("slider18").value = "0";
 	
@@ -166,6 +166,7 @@ function center(){
 	setTimeout(rightMovement(), 1000);
 }
 function rightMovement(){
+	//changes inferior long slider to 120
 	document.getElementById("sliderValue19").innerHTML = "120";
 	document.getElementById("slider19").value = "120";
 	
@@ -173,7 +174,7 @@ function rightMovement(){
 	setTimeout(center2,1000);
 }
 function center2(){
-	//changes superior long slider Value: to 180
+	//changes inferior long slider to 0
 	document.getElementById("sliderValue19").innerHTML = "0";
 	document.getElementById("slider19").value = "0";
 	
