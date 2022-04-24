@@ -19,7 +19,9 @@ The data folder consists of an HTML, CSS, and JavaScript files. These are the ma
 
 How to set up Arduino IDE to run files on esp32:<br>
 -Install the Arduino IDE here https://www.arduino.cc/en/software<br>
--Steps 2, 3 and 4 from this tutorial: https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/ [1]<br>
+-Install the ESP32 board in Arduino IDE as shown here: https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/
+-Install SPIFFS Uploader as shown here: https://randomnerdtutorials.com/install-esp32-filesystem-uploader-arduino-ide/
+-After completing the above, add Adafruit_GFX_Library, Arduino_JSON, AsyncTCP-master, ESPAsyncWebServer-master, XTronical-ST7735-Library directories to libraries folder of Arduino IDE<br>
 
 References <br>
 [1] R. Santos and S. Santos. "ESP32 Web Server (WebSocket) with Multiple <br>
