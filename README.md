@@ -23,9 +23,8 @@ How to set up Arduino IDE to run RoboticTongue directory on esp32:<br>
 -Install SPIFFS Uploader as shown here: https://randomnerdtutorials.com/install-esp32-filesystem-uploader-arduino-ide/<br>
 -After completing the above, add Adafruit_GFX_Library, Arduino_JSON, AsyncTCP-master, ESPAsyncWebServer-master, XTronical-ST7735-Library directories to libraries folder of Arduino IDE<br>
 
--Save RoboticTongue Directory where your Arduino sketches are saved to. 
--Open RoboticTongue.ino in Arduino IDE
--
+-Save RoboticTongue Directory where your Arduino sketches are saved to <br>
+-Open RoboticTongue.ino in Arduino IDE<br>
 
 References <br>
 [1] R. Santos and S. Santos. "ESP32 Web Server (WebSocket) with Multiple <br>
