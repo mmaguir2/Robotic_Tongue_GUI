@@ -1,14 +1,14 @@
 muscle            |slider #|gpio pin
-Genioglossus Anterior	  |10|21
-Genioglossus Posterior  |11|13
-Hyoglossus Left	        |12|27
-Hyoglossus Right        |13|12
-Styloglossus Left       |14|19
-Styloglossus Right      |15|14
-Transversus             |16|26
-Verticalis              |17|25
-Superior Longitudinal   |18|2
-Inferior Longitudinal   |19|32
+Genioglossus Anterior	  |10|12
+Genioglossus Posterior  |11|32
+Hyoglossus Left	        |12|13
+Hyoglossus Right        |13|2
+Styloglossus Left       |14|27
+Styloglossus Right      |15|26
+Transversus             |16|14
+Verticalis              |17|5
+Superior Longitudinal   |18|25
+Inferior Longitudinal   |19|21
 
 Genioglossus Ant&Post   |20|n/a
 Hyoglossus L&R          |21|n/a
