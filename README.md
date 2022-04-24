@@ -1,6 +1,6 @@
 # Robotic_Tongue_GUI
 User Interface Subsystem from Robotic Tongue Senior Design Project F21-S22 <br>
-Lead: Maritza Aguirre-Diaz <br>
+Maritza Aguirre-Diaz <br>
 Nathan Chen <br>
  
 Senior Design Project Goal:   <br>
