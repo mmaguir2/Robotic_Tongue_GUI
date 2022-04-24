@@ -62,7 +62,7 @@ static const int servo19Pin = 21;//Inferior Longitudinal
 
 //set network credentials - no password for NCSU 
 const char* ssid = "ncsu"; //[1]
-
+//const char* password = "ncsu"; //[1] uncomment if you are using a WiFi network with a password
 // "Create AsyncWebServer object on port 80" [1]
 AsyncWebServer server(80);//[1]
 AsyncWebSocket ws("/ws");//[1]
@@ -197,7 +197,7 @@ void onEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventType 
   }
 }
 
-//password for the website
+//username and password for the website
 const char* http_username = "admin";
 const char* http_password = "admin";
 const char* PARAM_INPUT_1 = "state";
@@ -214,7 +214,9 @@ void initSPIFFS(){//[1]
 //"initialize WiFi" [1]
 void initWiFi() {
   WiFi.mode(WIFI_STA);
-  WiFi.begin(ssid);//,password);
+  WiFi.begin(ssid);
+  //WiFi.begin(ssid,password); //uncomment if you are using a wifi network with a password
+
   Serial.print("Connecting to WiFi ..");
   tft.fillScreen(ST7735_BLACK);
   while (WiFi.status() != WL_CONNECTED) {
