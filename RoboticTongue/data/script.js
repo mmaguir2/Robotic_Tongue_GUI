@@ -192,9 +192,10 @@ function circleDown(){
 	//inferior longitudinal on
 	//hyoglossus right off
 	
-	//changes superior long slider Value: to 180
+	//changes hyoglossus right slider Value: to 0
 	document.getElementById("sliderValue13").innerHTML = "0";
 	document.getElementById("slider13").value = "0";
+	//changes Inferior Longitudinal to 120
 	document.getElementById("sliderValue19").innerHTML = "120";
 	document.getElementById("slider19").value = "120";
 	
@@ -205,7 +206,7 @@ function circleDown(){
 function circleDownLeft(){ 
 	//inferior longitudinal on
 	//hyoglossus left on
-	//changes superior long slider Value: to 180
+	//changes hyoglossus leftslider Value: to 120
 	document.getElementById("sliderValue12").innerHTML = "120";
 	document.getElementById("slider12").value = "120";
 	
