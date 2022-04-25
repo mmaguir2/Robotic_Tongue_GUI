@@ -217,11 +217,13 @@ function circleLeft(){
 	//inferior longitudinal off
 	//hyoglossus left off
 	
-	//changes superior long slider Value: to 180
+	//changes Styloglossus Left to 120
 	document.getElementById("sliderValue14").innerHTML = "120";
 	document.getElementById("slider14").value = "120";
+	//Hyoglossus Left to 0
 	document.getElementById("sliderValue12").innerHTML = "0";
 	document.getElementById("slider12").value = "0";
+	//Inferior Longitudinal to 0
 	document.getElementById("sliderValue19").innerHTML = "0";
 	document.getElementById("slider19").value = "0";
 	
@@ -231,7 +233,7 @@ function circleLeft(){
 	setTimeout(circleUpLeft, 500);
 }
 function circleUpLeft(){
-	//superior longitudinal on
+	//superior longitudinal to 120
 	
 	document.getElementById("sliderValue18").innerHTML = "120";
 	document.getElementById("slider18").value = "120";
@@ -240,7 +242,7 @@ function circleUpLeft(){
 	setTimeout(circleUp, 500);
 }
 function circleUp(){
-	//styloglossus left off
+	//styloglossus left off (to 0)
 	
 	document.getElementById("sliderValue14").innerHTML = "0";
 	document.getElementById("slider14").value = "0";
@@ -249,7 +251,7 @@ function circleUp(){
 	setTimeout(circleUpRight, 500);
 }
 function circleUpRight(){
-	//styloglossus right on 
+	//styloglossus right on (to 120)
 	
 	document.getElementById("sliderValue15").innerHTML = "120";
 	document.getElementById("slider15").value = "120";
@@ -258,7 +260,7 @@ function circleUpRight(){
 	setTimeout(circleRight, 500);
 }
 function circleRight(){
-	//superior longitudinal off
+	//superior longitudinal off(to zero)
 	
 	document.getElementById("sliderValue18").innerHTML = "0";
 	document.getElementById("slider18").value = "0";
@@ -267,14 +269,13 @@ function circleRight(){
 	setTimeout(circleDownRight, 500);
 }
 function circleDownRight(){
-	//hyoglossus right on 
-	//inferior longitudinal on 
-	//styloglossus right off
-	
+	//styloglossus right off (0) to 0
 	document.getElementById("sliderValue15").innerHTML = "0";
 	document.getElementById("slider15").value = "0";
+	//hyoglossus right on (to 120)
 	document.getElementById("sliderValue13").innerHTML = "120";
 	document.getElementById("slider13").value = "120";
+	//inferior longitudinal on (to 120)
 	document.getElementById("sliderValue19").innerHTML = "120";
 	document.getElementById("slider19").value = "120";
 	
